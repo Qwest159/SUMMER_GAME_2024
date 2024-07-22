@@ -22,7 +22,7 @@ let jeux = {
 let interdit = {
   un: ["quatre", "cinq", "six"],
   deux: ["quatre", "cinq", "six"],
-  trois: ["quatre"],
+  trois: ["quatre", "cinq"],
 };
 
 document.querySelector("#app").innerHTML = `
