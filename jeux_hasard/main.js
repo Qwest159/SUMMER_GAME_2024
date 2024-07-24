@@ -1,21 +1,20 @@
-let vie = 99;
+let vie = 1;
 let jeux = {
   tableau1: [
-    "histoire",
-    "géographie",
-    "philosophie",
-    "littérature",
-    "art",
-    "musique",
-    "science",
-    "mathématiques",
-    "politique",
-    "économie",
-    "biologie",
-    "chimie",
-    "physique",
-    "sociologie",
-    "psychologie",
+    "Histoire",
+    "Géographie",
+    "Philosophie",
+    "Littérature",
+    "Art",
+    "Musique",
+    "Science",
+    "Mathématiques",
+    "Politique",
+    "Biologie",
+    "Chimie",
+    "Physique",
+    "Sociologie",
+    "Psychologie",
   ],
 };
 
@@ -26,27 +25,13 @@ let interdit = {
 };
 
 document.querySelector("#app").innerHTML = `
-<h2>Jeux de l'identique</h2>
+<h2>Jeux des jumeaux</h2>
 
-<p>Les régles sont simples: Ecrivez l'un des mots suivants</p>
-<p> histoire,
-    géographie,
-    philosophie,
-    littérature,
-    art,
-    musique,
-    science,
-    mathématiques,
-    politique,
-    économie,
-    biologie,
-    chimie,
-    physique,
-    sociologie,
-    psychologie</p>
-   
+<p>La régle est simple. Ecrivez l'un des mots suivants :</p>
+<p> Histoire, Géographie, Philosophie, Littérature, Art, Musique, Science, Mathématiques, Politique, Économie, Biologie, Chimie, Physique, Sociologie, Psychologie</p>
+   <p>Votre mot doit correspondre à l'adversaire pour gagner (sur un total de 15 mots aléatoires choisit par l'ordinateur)</p>
           <input  id="valeur" placeholder="Ecrivez ici le mot">
-          <button id="reponse_client">Cliquez-ici pour commencer le jeux</button>
+          <button id="reponse_client">Envoiez le mot</button>
       `;
 
 let button = document.querySelector("#reponse_client");
@@ -73,10 +58,10 @@ function affichage() {
       vie = vie - 1;
       return repetition_erreur(valeur_client);
     } else {
-      return "Veuillez définir une donnée correcte ou valide,attention à l'orthographe du mot";
+      return "Veuillez définir une donnée correcte ou valide.<br> Attention à l'orthographe du mot";
     }
   } else {
-    return "Partie terminée";
+    return "Nombre d'essai: " + vie + "<br>Partie terminée";
   }
 }
 
