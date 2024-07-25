@@ -28,7 +28,7 @@ document.querySelector("#app").innerHTML = `
 <h2>Jeux des jumeaux</h2>
 
 <p>La régle est simple. Ecrivez l'un des mots suivants :</p>
-<p> Histoire, Géographie, Philosophie, Littérature, Art, Musique, Science, Mathématiques, Politique, Économie, Biologie, Chimie, Physique, Sociologie, Psychologie</p>
+<p><strong>Histoire, Géographie, Philosophie, Littérature, Art, Musique, Science, Mathématiques, Politique, Économie, Biologie, Chimie, Physique, Sociologie, Psychologie</strong> </p>
    <p>Votre mot doit correspondre à l'adversaire pour gagner (sur un total de 15 mots aléatoires choisit par l'ordinateur)</p>
           <input  id="valeur" placeholder="Ecrivez ici le mot">
           <button id="reponse_client">Envoiez le mot</button>
