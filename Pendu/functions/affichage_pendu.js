@@ -1,9 +1,19 @@
-export function affichage_pendu(mot_tableau, vie, tableau_vrai) {
+export function affichage_pendu(
+  mot_tableau,
+  vie,
+  tableau_vrai,
+  tableau_faux,
+  categorie
+) {
   document.querySelector("#app").innerHTML = `
     <h1>Le jeu commence</h1>
+    <h2>Catégorie: ${categorie}</h2>
 
+
+    <p id="bonnes_lettres">Bonne(s) lettre(s):</p>
+    <p id ="mauvaises_lettres">Mauvaise(s) lettre(s):</p>
     <p id="mot">${reponse_pendu(mot_tableau, tableau_vrai)}</p>
-    <p id="vierestante">Vie restante: ${vie}</p>
+    <p id="vierestante">Vie(s) restante(s): <strong id="bonne">${vie}</strong></p>
    
     <input type="text" id="reponse_utilisateur_lettre" placeholder ="Ecrivez-ici">
     <button type="submit" id="envoier_lettre">Envoiez</button>
@@ -19,7 +29,6 @@ export function reponse_pendu(mot_tableau, tableau_vrai) {
       underscore += " " + lettre.replace(lettre, "_");
     }
   });
-  console.log([...underscore]);
   let foundgagner = [...underscore].find((lettre_bonne) => lettre_bonne == "_");
   if (!foundgagner) {
     return "gagner";

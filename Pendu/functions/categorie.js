@@ -14,12 +14,19 @@ export function categorie_motchoisis() {
     const index_aleatoire = Math.floor(Math.random() * categorie.length);
     const categorie_aleatoire = categorie[index_aleatoire];
     index_mot = Math.floor(Math.random() * liste[categorie_aleatoire].length);
-    return (mot = liste[categorie_aleatoire][index_mot]);
+    return {
+      mota_trouver: liste[categorie_aleatoire][index_mot],
+      categorie: categorie_aleatoire,
+    };
   } else if (categorie.indexOf(reponse.value) >= 0) {
     /////////////////////   CATEGORIE CHOISIE   ////////////////
     const index_choisie = categorie.indexOf(reponse.value);
     let categorie_choisie = categorie[index_choisie];
     index_mot = Math.floor(Math.random() * liste[categorie_choisie].length);
-    return (mot = liste[categorie_choisie][index_mot]);
+
+    return {
+      mota_trouver: liste[categorie_choisie][index_mot],
+      categorie: categorie_choisie,
+    };
   }
 }
