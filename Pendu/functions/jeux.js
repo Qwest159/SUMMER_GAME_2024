@@ -74,11 +74,11 @@ export function jeu_pendu() {
         ) {
           if (
             reponseclient.value &&
-            !tableau_vrai.includes(reponseclient.value.trim()) &&
-            !tableau_faux.includes(reponseclient.value.trim())
+            !tableau_vrai.includes(reponseclient.value.trim().toLowerCase()) &&
+            !tableau_faux.includes(reponseclient.value.trim().toLowerCase())
           ) {
             traitement_reponse_client(
-              reponseclient.value.trim(),
+              reponseclient.value.trim().toLowerCase(),
               mot_tableau,
               tableau_vrai,
               tableau_faux,
@@ -101,8 +101,10 @@ export function jeu_pendu() {
           } else {
             affichage("Vous avez déjà repeté cette lettre", "h3");
           }
-        } else if (reponseclient.value.trim().length == mota_trouver.length) {
-          if (reponseclient.value.trim() === mota_trouver) {
+        } else if (
+          reponseclient.value.trim().toLowerCase().length == mota_trouver.length
+        ) {
+          if (reponseclient.value.trim().toLowerCase() === mota_trouver) {
             document.querySelector("#app").innerHTML = `
             <h1>Gagner</h1>
             <p>Toutes mes félicitations.  </p>
@@ -110,7 +112,7 @@ export function jeu_pendu() {
          
             `;
           } else {
-            tableau_faux.push(reponseclient.value.trim());
+            tableau_faux.push(reponseclient.value.trim().toLowerCase());
           }
         } else {
           affichage("Vous devez écrire une lettre", "h3");

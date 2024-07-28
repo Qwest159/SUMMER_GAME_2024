@@ -9,7 +9,7 @@ export function categorie_motchoisis() {
   let index_mot = "";
   let mot = "";
   const categorie = categorie_affichage();
-  if (reponse.value.trim().trim() == "aléatoire") {
+  if (reponse.value.trim().toLowerCase() == "aléatoire") {
     ///////////////////   PARTIE ALEATOIRE  ////////////////
     const index_aleatoire = Math.floor(Math.random() * categorie.length);
     const categorie_aleatoire = categorie[index_aleatoire];
@@ -18,9 +18,9 @@ export function categorie_motchoisis() {
       mota_trouver: liste[categorie_aleatoire][index_mot],
       categorie: categorie_aleatoire,
     };
-  } else if (categorie.indexOf(reponse.value.trim().trim()) >= 0) {
+  } else if (categorie.indexOf(reponse.value.trim().toLowerCase()) >= 0) {
     /////////////////////   CATEGORIE CHOISIE   ////////////////
-    const index_choisie = categorie.indexOf(reponse.value.trim());
+    const index_choisie = categorie.indexOf(reponse.value.trim().toLowerCase());
     let categorie_choisie = categorie[index_choisie];
     index_mot = Math.floor(Math.random() * liste[categorie_choisie].length);
 
