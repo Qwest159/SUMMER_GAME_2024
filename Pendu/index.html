@@ -5,6 +5,9 @@
     <meta name="viewport" />
     <title>Jeu du Pendu</title>
     <style>
+      * {
+        margin: 0.35em;
+      }
       body {
         background-color: rgb(197, 195, 195);
         font-size: 2em;
@@ -15,16 +18,21 @@
         width: 50%;
         align-content: center;
         margin: auto;
+        flex-wrap: wrap;
       }
       h1,
       p,
-      h2 {
+      h2,
+      h3 {
         text-align: center;
       }
+
       input,
       button {
-        font-size: 1.5em;
-        margin: 0.5em 0;
+        font-size: 1.2em;
+        margin: 0.3em 1em;
+        border-radius: 1em;
+        text-align: center;
       }
       #bonne {
         color: green;

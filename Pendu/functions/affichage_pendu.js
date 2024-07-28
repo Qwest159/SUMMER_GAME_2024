@@ -6,9 +6,7 @@ export function affichage_pendu(
   categorie
 ) {
   document.querySelector("#app").innerHTML = `
-    <h1>Le jeu commence</h1>
     <h2>Catégorie: ${categorie}</h2>
-
 
     <p id="bonnes_lettres">Bonne(s) lettre(s):</p>
     <p id ="mauvaises_lettres">Mauvaise(s) lettre(s):</p>
