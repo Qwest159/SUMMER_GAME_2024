@@ -29,7 +29,7 @@ document.querySelector("#app").innerHTML = `
 ${nav}
 
 <main>
-    <h2>Jeux des jumeaux</h2>
+    <h1>Jeux des jumeaux</h1>
 
     <p>La régle est simple. Ecrivez l'un des mots suivants :</p>
     <p><strong>Histoire, Géographie, Philosophie, Littérature, Art, Musique, Science, Mathématiques, Politique, Économie, Biologie, Chimie, Physique, Sociologie, Psychologie</strong> </p>

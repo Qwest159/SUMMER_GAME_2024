@@ -7,7 +7,11 @@ const chiffre_mystere = Math.floor(Math.random() * 101);
 
 document.querySelector("#app").innerHTML = `
 ${nav}
-<main><input type="number" name="chiffre" id="chiffre" />
+<main>
+<h1>Jeu du chiffre Mystère</h1>
+<p>Ecrivez un chiffre de <strong>0</strong> à <strong>100</strong></p>
+<input type="number" name="chiffre" id="chiffre" 
+placeholder="Ecrivez-ici"/>
 <button type="button" id="button">Envoyer</button>
 </main>
 
@@ -32,7 +36,11 @@ function jouer() {
     if (jeux) {
       let message = "";
       let chiffre_recup_utilisateur = document.querySelector("#chiffre").value;
-      if (chiffre_recup_utilisateur != "" && chiffre_recup_utilisateur >= 0) {
+      if (
+        chiffre_recup_utilisateur != "" &&
+        chiffre_recup_utilisateur >= 0 &&
+        chiffre_recup_utilisateur <= 100
+      ) {
         if (chiffre_recup_utilisateur == chiffre_mystere) {
           message = "Vous avez gagné";
           jeux = false;
@@ -51,11 +59,14 @@ function jouer() {
             message =
               "Le chiffre recherché est plus petit <br> Vie restante: " + vie;
           }
-          actualisation_element("chiffre", "");
         }
       } else {
-        message = "Veuillez rentrer un nombre positif et valide";
+        message = "Veuillez rentrer un nombre valide";
       }
+      actualisation_element(
+        "chiffre",
+        (document.querySelector("#chiffre").value = "test")
+      );
       affichage(message);
     }
   });

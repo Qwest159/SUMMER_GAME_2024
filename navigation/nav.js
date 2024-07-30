@@ -1,7 +1,7 @@
 const urls = [
   { url: "/", nom: "Accueil" },
-  { url: "/chiffre_mystere/index.html", nom: "Chiffre Mystere" },
-  { url: "/jeux_hasard/index.html", nom: "Jeux du Hasard" },
+  { url: "/chiffre_mystere/index.html", nom: "Chiffre Mystère" },
+  { url: "/jeux_jumeaux/index.html", nom: "Jeux des Jumeaux" },
   { url: "/Pendu/index.html", nom: "Pendu" },
 ];
 let pageactuelle = window.location.pathname;
