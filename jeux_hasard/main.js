@@ -1,3 +1,4 @@
+import { nav } from "../navigation/nav.js";
 let vie = 1;
 let jeux = {
   tableau1: [
@@ -25,6 +26,7 @@ let interdit = {
 };
 
 document.querySelector("#app").innerHTML = `
+${nav}
 <h2>Jeux des jumeaux</h2>
 
 <p>La régle est simple. Ecrivez l'un des mots suivants :</p>

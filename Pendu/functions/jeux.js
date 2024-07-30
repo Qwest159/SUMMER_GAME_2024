@@ -9,6 +9,7 @@
 //boutin de fin(gagner ou perdu) => revenir à l'accueil
 
 //
+import { nav } from "../../navigation/nav.js";
 let vie = 7;
 let tableau_faux = [];
 let tableau_vrai = [];
@@ -22,6 +23,7 @@ import {
 
 export function jeu_pendu() {
   document.querySelector("#app").innerHTML = `
+
     <h1> Choissisez la catégorie</h1>
 
     <ul>
@@ -69,8 +71,8 @@ export function jeu_pendu() {
           "#reponse_utilisateur_lettre"
         );
         if (
-          reponseclient.value.trim() &&
-          reponseclient.value.trim().length == 1
+          reponseclient.value.trim().length == 1 ||
+          reponseclient.value.trim().toLowerCase().length == mota_trouver.length
         ) {
           if (
             reponseclient.value &&
@@ -84,80 +86,36 @@ export function jeu_pendu() {
               tableau_faux,
               vie
             );
-
-            if (vierestante(vie, tableau_faux) == 0) {
-              document.querySelector("#app").innerHTML = `
-        <h1>GAME OVER</h1>
-        <p>Le mot a trouvé: <strong>${mot}</strong></p>
-        `;
-            } else if (reponse_pendu(mot_tableau, tableau_vrai) === "gagner") {
-              document.querySelector("#app").innerHTML = `
-        <h1>Gagner</h1>
-        <p>Toutes mes félicitations.</p>
-        <p> Le mot a trouvé: <strong>${mot}</strong></p>  
-     
-        `;
-            }
           } else {
             affichage("Vous avez déjà repeté cette lettre", "h3");
-          }
-        } else if (
-          reponseclient.value.trim().toLowerCase().length == mota_trouver.length
-        ) {
-          if (reponseclient.value.trim().toLowerCase() === mota_trouver) {
-            document.querySelector("#app").innerHTML = `
-            <h1>Gagner</h1>
-            <p>Toutes mes félicitations.  </p>
-            <p> Le mot a trouvé: <strong>${mot}</strong></p>  
-         
-            `;
-          } else {
-            tableau_faux.push(reponseclient.value.trim().toLowerCase());
           }
         } else {
           affichage("Vous devez écrire une lettre", "h3");
         }
+        if (vierestante(vie, tableau_faux) == 0) {
+          return (document.querySelector("#app").innerHTML = `
+            ${nav}
+    <h1>GAME OVER</h1>
+    <p>Le mot a trouvé: <strong>${mot}</strong></p>
+    `);
+        }
+        if (
+          reponseclient.value.trim().toLowerCase() == mota_trouver ||
+          reponse_pendu(mot_tableau, tableau_vrai) === "gagner"
+        ) {
+          return (document.querySelector("#app").innerHTML = `
+            ${nav}
+          <h1>Gagner</h1>
+          <p>Toutes mes félicitations.  </p>
+          <p> Le mot a trouvé: <strong>${mot}</strong></p>  
+       
+          `);
+        }
+
         /////// ACTUALISER LES ELEMENTS /////////
-        actualisation_element(
-          "bonnes_lettres",
-          "Bonne(s) lettre(s): <strong id='bonne'>" + tableau_vrai + "</strong>"
-        );
-        actualisation_element(
-          "mauvaises_lettres",
-          "Mauvaise(s) lettre(s): <strong id='mauvaise'>" +
-            tableau_faux +
-            "</strong>"
-        );
-        actualisation_element("reponse_utilisateur_lettre", "Ecrivez-");
-        actualisation_element("mot", reponse_pendu(mot_tableau, tableau_vrai));
-        if (vierestante(vie, tableau_faux) > 5) {
-          actualisation_element(
-            "vierestante",
-            "Vie(s) restante(s): <strong id='bonne'>" +
-              vierestante(vie, tableau_faux) +
-              "</strong>"
-          );
-        } else if (vierestante(vie, tableau_faux) > 3) {
-          actualisation_element(
-            "vierestante",
-            "Vie(s) restante(s): <strong id='moyen'>" +
-              vierestante(vie, tableau_faux) +
-              "</strong>"
-          );
-        } else
-          actualisation_element(
-            "vierestante",
-            "Vie(s) restante(s): <strong id='mauvaise'>" +
-              vierestante(vie, tableau_faux) +
-              "</strong>"
-          );
-
-        //actualiser pas correct à 100% , car il ne prend reprend pas l'input
-
-        actualisation_element(
-          "reponse_utilisateur_lettre",
-          (reponseclient.value = "")
-        );
+        if (vierestante(vie, tableau_faux) >= 1) {
+          actualiser_afficher_innerhtml(mot_tableau, reponseclient);
+        }
       });
     } else {
       affichage("Mot mal écrit", "h3");
@@ -179,5 +137,46 @@ function affichage(contenu, element) {
 }
 
 function actualisation_element(id, contenu) {
-  document.getElementById(id).innerHTML = contenu;
+  return (document.getElementById(id).innerHTML = contenu);
+}
+
+function actualiser_afficher_innerhtml(mot_tableau, reponseclient) {
+  actualisation_element(
+    "bonnes_lettres",
+    "Bonne(s) lettre(s): <strong id='bonne'>" + tableau_vrai + "</strong>"
+  );
+  actualisation_element(
+    "mauvaises_lettres",
+    "Mauvaise(s) lettre(s): <strong id='mauvaise'>" + tableau_faux + "</strong>"
+  );
+  actualisation_element("reponse_utilisateur_lettre", "Ecrivez-");
+  actualisation_element("mot", reponse_pendu(mot_tableau, tableau_vrai));
+  if (vierestante(vie, tableau_faux) > 5) {
+    actualisation_element(
+      "vierestante",
+      "Vie(s) restante(s): <strong id='bonne'>" +
+        vierestante(vie, tableau_faux) +
+        "</strong>"
+    );
+  } else if (vierestante(vie, tableau_faux) > 3) {
+    actualisation_element(
+      "vierestante",
+      "Vie(s) restante(s): <strong id='moyen'>" +
+        vierestante(vie, tableau_faux) +
+        "</strong>"
+    );
+  } else
+    actualisation_element(
+      "vierestante",
+      "Vie(s) restante(s): <strong id='mauvaise'>" +
+        vierestante(vie, tableau_faux) +
+        "</strong>"
+    );
+
+  //actualiser pas correct à 100% , car il ne prend reprend pas l'input
+
+  actualisation_element(
+    "reponse_utilisateur_lettre",
+    (reponseclient.value = "")
+  );
 }

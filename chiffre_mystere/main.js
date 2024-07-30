@@ -2,10 +2,11 @@
 // condition si chiffrerecup = chiffre mystere => gagné
 // si chiffrerecup et different de chiffre mystere => perdu
 // si vie = 0 => game over
-
+import { nav } from "../navigation/nav.js";
 const chiffre_mystere = Math.floor(Math.random() * 101);
 
 document.querySelector("#app").innerHTML = `
+${nav}
 
 <input type="number" name="chiffre" id="chiffre" />
 <button type="button" id="button">Envoyer</button>
