@@ -6,6 +6,7 @@ export function affichage_pendu(
   categorie
 ) {
   document.querySelector("#app").innerHTML = `
+  <main>
     <h2>Catégorie: ${categorie}</h2>
 
     <p id="bonnes_lettres">Bonne(s) lettre(s):</p>
@@ -15,6 +16,7 @@ export function affichage_pendu(
    
     <input type="text" id="reponse_utilisateur_lettre" placeholder ="Ecrivez-ici">
     <button type="submit" id="envoier_lettre">Envoiez</button>
+    </main>
     `;
 }
 export function reponse_pendu(mot_tableau, tableau_vrai) {

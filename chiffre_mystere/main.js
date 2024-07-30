@@ -7,9 +7,9 @@ const chiffre_mystere = Math.floor(Math.random() * 101);
 
 document.querySelector("#app").innerHTML = `
 ${nav}
-
-<input type="number" name="chiffre" id="chiffre" />
+<main><input type="number" name="chiffre" id="chiffre" />
 <button type="button" id="button">Envoyer</button>
+</main>
 
 `;
 

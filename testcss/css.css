@@ -1,76 +1,6 @@
-.active {
-  color: red;
-}
-#nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-content: center;
-  list-style-type: none;
-}
-/* ///// JEU HASARD ////// */
-
-button {
-  margin: auto;
-  background-color: rgb(0, 0, 0);
-  height: auto;
-  padding: 0.2em;
-  font-size: 1em;
-  font-weight: 700;
-  color: white;
-  border: none;
-  margin: 1em 0;
-  border-radius: 1em;
-  margin: 0.3em 1em;
-  margin: auto;
-}
-input {
-  margin: 0.3em 1em;
-  border-radius: 1em;
-  text-align: center;
-  margin: auto;
-  padding: 0.2em 0;
-  margin: 2em 0;
-  font-size: 1em;
-}
-h3 {
-  text-align: center;
-}
-/* ///////// PENDU //////////     */
-*:not(#nav) {
-  margin: 0.35em;
-  text-decoration: none;
-}
 body {
-  background-color: rgb(197, 195, 195);
-  font-size: 1.5em;
+  background-color: grey;
 }
-#app {
-  margin: auto;
-}
-main {
-  align-content: center;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-li {
-  text-align: left;
-}
-
-#bonne {
-  color: green;
-}
-#moyen {
-  color: yellow;
-}
-#mauvaise {
-  color: red;
-}
-
 #imggroupe img {
   width: 30vh;
 }
@@ -82,7 +12,7 @@ div#imggroupe {
     bottom: 0vh;
   }
   30% {
-    bottom: 20vh;
+    bottom: 55vh;
     opacity: 0;
   }
 
@@ -116,7 +46,7 @@ div#imggroupe {
     bottom: 0vh;
   }
   15% {
-    bottom: 20vh;
+    bottom: 55vh;
   }
   20% {
     opacity: 0;

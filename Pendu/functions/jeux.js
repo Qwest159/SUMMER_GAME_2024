@@ -23,19 +23,19 @@ import {
 
 export function jeu_pendu() {
   document.querySelector("#app").innerHTML = `
+<main>   <h1> Choissisez la catégorie</h1>
 
-    <h1> Choissisez la catégorie</h1>
+<ul>
+<li>Ecrivez le mot: "<strong>aléatoire</strong>" si vous souhaitez une catégorie choisie par l'ordinateur</li>
 
-    <ul>
-    <li>Ecrivez le mot: "<strong>aléatoire</strong>" si vous souhaitez une catégorie choisie par l'ordinateur</li>
-    
-    <li>Ecrivez l'une des catégories suivantes: ${categorie_affichage()}</li>
-    </ul>
-    
+<li>Ecrivez l'une des catégories suivantes: ${categorie_affichage()}</li>
+</ul>
 
-    <input type="text" id="reponse_utilisateur" placeholder ="Ecrivez-ici">
-    <button type="submit" id="envoier">Envoiez</button>
-    
+
+<input type="text" id="reponse_utilisateur" placeholder ="Ecrivez-ici">
+<button type="submit" id="envoier">Envoiez</button>
+</main>
+ 
     `;
 
   let envoier = document.querySelector("#envoier");
@@ -94,9 +94,12 @@ export function jeu_pendu() {
         }
         if (vierestante(vie, tableau_faux) == 0) {
           return (document.querySelector("#app").innerHTML = `
+   
             ${nav}
+            <main>
     <h1>GAME OVER</h1>
     <p>Le mot a trouvé: <strong>${mot}</strong></p>
+    </main>
     `);
         }
         if (
@@ -105,10 +108,29 @@ export function jeu_pendu() {
         ) {
           return (document.querySelector("#app").innerHTML = `
             ${nav}
-          <h1>Gagner</h1>
-          <p>Toutes mes félicitations.  </p>
-          <p> Le mot a trouvé: <strong>${mot}</strong></p>  
-       
+            <main>
+            <h1>Gagner</h1>
+    <p>Toutes mes félicitations.</p>
+    <p>Le mot a trouvé: <strong>${mot}</strong></p>
+    <div id="imggroupe">
+      <figure id="groupe1">
+        <img class="fusee" src="../Pendu/image/fusée.png" alt="fusée" />
+        <img class="explosion" src="../Pendu/image/explosion.png" alt="fusée" />
+      </figure>
+      <figure id="groupe2">
+        <img id="fusee" src="../Pendu/image/fusee2centrale.png" alt="fusée" />
+        <img
+          id="explosion"
+          src="../Pendu/image/explo2centrale.png"
+          alt="fusée"
+        />
+      </figure>
+      <figure id="groupe3">
+        <img class="fusee" src="../Pendu/image/fusee3droite.png" alt="fusée" />
+        <img class="explosion" src="../Pendu/image/explosion.png" alt="fusée" />
+      </figure>
+    </div>
+    </main>
           `);
         }
 
