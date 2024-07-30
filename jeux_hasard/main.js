@@ -1,5 +1,5 @@
 import { nav } from "../navigation/nav.js";
-let vie = 1;
+let vie = 99;
 let jeux = {
   tableau1: [
     "Histoire",

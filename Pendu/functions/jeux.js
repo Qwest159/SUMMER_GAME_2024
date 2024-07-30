@@ -129,7 +129,7 @@ export function jeu_pendu() {
         <img class="fusee" src="../Pendu/image/fusee3droite.png" alt="fusée" />
         <img class="explosion" src="../Pendu/image/explosion.png" alt="fusée" />
       </figure>
-    </div>
+ 
     </main>
           `);
         }

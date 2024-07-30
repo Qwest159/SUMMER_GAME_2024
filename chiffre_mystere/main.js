@@ -51,6 +51,7 @@ function jouer() {
             message =
               "Le chiffre recherché est plus petit <br> Vie restante: " + vie;
           }
+          actualisation_element("chiffre", "");
         }
       } else {
         message = "Veuillez rentrer un nombre positif et valide";
@@ -58,5 +59,8 @@ function jouer() {
       affichage(message);
     }
   });
+}
+function actualisation_element(id, contenu) {
+  return (document.getElementById(id).innerHTML = contenu);
 }
 jouer();
