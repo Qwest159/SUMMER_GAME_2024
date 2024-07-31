@@ -1,3 +1,7 @@
+body {
+  /* background-color: rgb(197, 195, 195); */
+  font-size: 1.5em;
+}
 .active {
   color: red;
 }
@@ -41,10 +45,7 @@ h3 {
   margin: 0.35em;
   text-decoration: none;
 }
-body {
-  background-color: rgb(197, 195, 195);
-  font-size: 1.5em;
-}
+
 #app {
   margin: auto;
 }
