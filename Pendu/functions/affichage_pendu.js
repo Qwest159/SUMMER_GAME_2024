@@ -14,7 +14,7 @@ export function affichage_pendu(
     <p id="mot">${reponse_pendu(mot_tableau, tableau_vrai)}</p>
     <p id="vierestante">Vie(s) restante(s): <strong id="bonne">${vie}</strong></p>
    
-    <input type="text" id="reponse_utilisateur_lettre" placeholder ="Ecrivez-ici">
+    <input type="text" id="reponse_utilisateur_lettre" placeholder ="Ecrivez-ici" autocomplete="off">
     <button type="submit" id="envoier_lettre">Envoiez</button>
     </main>
     `;

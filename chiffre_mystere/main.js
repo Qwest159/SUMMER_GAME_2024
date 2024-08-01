@@ -11,7 +11,7 @@ ${nav}
 <h1>Jeu du chiffre Mystère</h1>
 <p>Ecrivez un chiffre de <strong>0</strong> à <strong>100</strong></p>
 <input type="number" name="chiffre" id="chiffre" 
-placeholder="Ecrivez-ici"/>
+placeholder="Ecrivez-ici" autocomplete="off"/>
 <button type="button" id="button">Envoyer</button>
 </main>
 

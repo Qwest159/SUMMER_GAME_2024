@@ -42,7 +42,7 @@ button {
 input {
   border-radius: 1em;
   text-align: center;
-  padding: 0.8em 1.5em;
+  padding: 0.8em 1em;
   align-self: center;
   font-size: 1em;
 }
@@ -166,4 +166,10 @@ div#imggroupe {
 #explosion {
   animation: explosioncent 10s infinite;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 1em;
+  }
 }

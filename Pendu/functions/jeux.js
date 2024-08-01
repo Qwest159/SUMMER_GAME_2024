@@ -32,7 +32,7 @@ export function jeu_pendu() {
 </ul>
 
 
-<input type="text" id="reponse_utilisateur" placeholder ="Ecrivez-ici">
+<input type="text" id="reponse_utilisateur" placeholder ="Ecrivez-ici" autocomplete="off">
 <button type="submit" id="envoier">Envoiez</button>
 </main>
  
