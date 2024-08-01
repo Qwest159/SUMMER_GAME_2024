@@ -6,6 +6,7 @@ export function affichage_pendu(
   categorie
 ) {
   document.querySelector("#app").innerHTML = `
+      ${nav}
   <main>
     <h2>Catégorie: ${categorie}</h2>
 

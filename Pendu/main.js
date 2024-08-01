@@ -1,11 +1,11 @@
-// import { nav } from "../navigation/nav.js";
+import { nav } from "../navigation/nav.js";
 import { jeu_pendu } from "./functions/jeux.js";
 
 document.querySelector("#app").innerHTML = `
-
+    ${nav}
 <main>
   <h1>Bienvenue au jeu du Pendu</h1>
-    
+
     <button type="submit" id="envoier_pendu">Appuyer pour commencer</button>
 </main>
     
