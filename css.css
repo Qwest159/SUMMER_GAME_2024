@@ -1,9 +1,16 @@
 body {
-  /* background-color: rgb(197, 195, 195); */
+  background-color: rgb(197, 195, 195);
   font-size: 1.5em;
 }
+#nav ul a {
+  color: black;
+  font-weight: 500;
+}
+#nav ul a:hover {
+  color: rgb(0, 162, 255);
+}
 .active {
-  color: red;
+  color: red !important;
 }
 #nav ul {
   display: flex;
@@ -12,28 +19,27 @@ body {
   align-content: center;
   list-style-type: none;
 }
+
 /* ///// JEU HASARD ////// */
 
 button {
-  margin: auto;
   background-color: rgb(0, 0, 0);
   height: auto;
-  padding: 0.2em;
   font-size: 1em;
   font-weight: 700;
   color: white;
   border: none;
+  padding: 1em;
   margin: 1em 0;
-  border-radius: 1em;
-  margin: 0.3em 1em;
   margin: auto;
+  border-radius: 1em;
 }
 input {
   margin: 0.3em 1em;
   border-radius: 1em;
   text-align: center;
   margin: auto;
-  padding: 0.2em 0;
+  padding: 0.5em 0;
   margin: 2em 0;
   font-size: 1em;
 }
