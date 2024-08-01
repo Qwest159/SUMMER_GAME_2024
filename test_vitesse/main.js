@@ -2,10 +2,12 @@ import { nav } from "../navigation/nav.js";
 document.querySelector("#app").innerHTML = `
 ${nav}
 <main>
-<button type="submit" id="start_temps">Cliquez-ici pour commencer</button>
+  <h1>Test de rapidité</h1>
+  <p>Un chrono va se lancer(celui du compteur), le but est d'arriver à 0</p>
+<button type="submit" id="start_temps">Cliquez-ici pour commencer<br>(cliquez de nouveau pour arreter le chrono)</button>
 
-<input type="hidden" name="" id="valeur_cacher" value="300">
-<p ><strong id="chiffre_start">300</strong></p>
+<input type="hidden" name="" id="valeur_cacher" value="200">
+<p >Compteur: <strong id="chiffre_start">200</strong></p>
 
 
 
@@ -20,9 +22,10 @@ envoierbutton_id.addEventListener("click", () => {
     document.querySelector("#valeur_cacher").value
   );
   if (!commencer_temp) {
-    valeur_input.innerHTML = "Cliquez-ici pour arreter le compteur";
+    valeur_input.innerHTML =
+      "Cliquez-ici pour arreter le compteur<br>(cliquez de nouveau pour arreter le chrono)";
 
-    commencer_temp = setInterval(temps, 20);
+    commencer_temp = setInterval(temps, 15);
   } else if (commencer_temp) {
     clearInterval(commencer_temp);
     console.log(valeur_inputcacher_chiffre);

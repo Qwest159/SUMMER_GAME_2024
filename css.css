@@ -2,6 +2,10 @@ body {
   background-color: rgb(197, 195, 195);
   font-size: 1.5em;
 }
+*:not(#nav) {
+  margin: 0.35em;
+  text-decoration: none;
+}
 #nav ul a {
   color: black;
   font-weight: 500;
@@ -29,28 +33,23 @@ button {
   font-weight: 700;
   color: white;
   border: none;
-  padding: 1em;
-  margin: 1em 0;
-  margin: auto;
+  padding: 1em 5em;
+  align-self: center;
   border-radius: 1em;
+
+  /* margin: auto; */
 }
 input {
-  margin: 0.3em 1em;
   border-radius: 1em;
   text-align: center;
-  margin: auto;
-  padding: 0.5em 0;
-  margin: 2em 0;
+  padding: 1em 5em;
+  align-self: center;
   font-size: 1em;
 }
 h3 {
   text-align: center;
 }
 /* ///////// PENDU //////////     */
-*:not(#nav) {
-  margin: 0.35em;
-  text-decoration: none;
-}
 
 #app {
   margin: auto;
