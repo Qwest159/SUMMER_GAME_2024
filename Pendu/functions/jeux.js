@@ -9,7 +9,7 @@
 //boutin de fin(gagner ou perdu) => revenir à l'accueil
 
 //
-import { nav } from "../../navigation/nav.js";
+// import { nav } from "../../navigation/nav.js";
 let vie = 7;
 let tableau_faux = [];
 let tableau_vrai = [];
@@ -95,7 +95,7 @@ export function jeu_pendu() {
         if (vierestante(vie, tableau_faux) == 0) {
           return (document.querySelector("#app").innerHTML = `
    
-            ${nav}
+    µ
             <main>
     <h1>GAME OVER</h1>
     <p>Le mot a trouvé: <strong>${mot}</strong></p>
@@ -107,7 +107,7 @@ export function jeu_pendu() {
           reponse_pendu(mot_tableau, tableau_vrai) === "gagner"
         ) {
           return (document.querySelector("#app").innerHTML = `
-            ${nav}
+      
             <main>
             <h1>Gagner</h1>
     <p>Toutes mes félicitations.</p>
