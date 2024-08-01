@@ -32,7 +32,7 @@ envoierbutton_id.addEventListener("click", () => {
 
     affichage(presdu_0(valeur_inputcacher_chiffre));
 
-    commencer_temp = null;
+    // commencer_temp = null;
     // pour recliquer et redemarrer le timer
   }
   // affichage(valeur_input_chiffre);

@@ -1,3 +1,4 @@
+import { nav } from "../../navigation/nav.js";
 export function affichage_pendu(
   mot_tableau,
   vie,

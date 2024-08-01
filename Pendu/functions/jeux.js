@@ -116,20 +116,20 @@ export function jeu_pendu() {
     <p>Le mot a trouvé: <strong>${mot}</strong></p>
     <div id="imggroupe">
       <figure id="groupe1">
-        <img class="fusee" src="../pendu/image/fusée.png" alt="fusée" />
-        <img class="explosion" src="../pendu/image/explosion.png" alt="fusée" />
+        <img class="fusee" src="../storage/image/fusée.png" alt="fusée" />
+        <img class="explosion" src="../storage/image/explosion.png" alt="fusée" />
       </figure>
       <figure id="groupe2">
-        <img id="fusee" src="../pendu/image/fusee2centrale.png" alt="fusée" />
+        <img id="fusee" src="../storage/image/fusee2centrale.png" alt="fusée" />
         <img
           id="explosion"
-          src="../pendu/image/explo2centrale.png"
+          src="../storage/image/explo2centrale.png"
           alt="fusée"
         />
       </figure>
       <figure id="groupe3">
-        <img class="fusee" src="../pendu/image/fusee3droite.png" alt="fusée" />
-        <img class="explosion" src="../pendu/image/explosion.png" alt="fusée" />
+        <img class="fusee" src="../storage/image/fusee3droite.png" alt="fusée" />
+        <img class="explosion" src="../storage/image/explosion.png" alt="fusée" />
       </figure>
  
     </main>
