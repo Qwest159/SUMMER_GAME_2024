@@ -16,14 +16,14 @@ ${nav}
 let envoierbutton_id = document.querySelector("#start_temps");
 let commencer_temp;
 envoierbutton_id.addEventListener("click", () => {
-  let valeur_input = document.querySelector("#start_temps");
+  // let valeur_input = document.querySelector("#start_temps");
 
   let valeur_inputcacher_chiffre = parseInt(
     document.querySelector("#valeur_cacher").value
   );
   if (!commencer_temp) {
-    valeur_input.innerHTML =
-      "Cliquez-ici pour arreter le compteur<br>(cliquez de nouveau pour arreter le chrono)";
+    // valeur_input.innerHTML =
+    //   "Cliquez-ici pour arreter le compteur<br>(cliquez de nouveau pour arreter le chrono)";
 
     commencer_temp = setInterval(temps, 15);
   } else if (commencer_temp) {

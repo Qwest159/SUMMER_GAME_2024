@@ -33,7 +33,7 @@ button {
   font-weight: 700;
   color: white;
   border: none;
-  padding: 1em 5em;
+  padding: 1em 1.5em;
   align-self: center;
   border-radius: 1em;
 
@@ -42,7 +42,7 @@ button {
 input {
   border-radius: 1em;
   text-align: center;
-  padding: 1em 5em;
+  padding: 1em 2em;
   align-self: center;
   font-size: 1em;
 }
@@ -62,7 +62,9 @@ main {
   justify-content: center;
   text-align: center;
 }
-
+p {
+  word-wrap: break-word;
+}
 li {
   text-align: left;
 }
