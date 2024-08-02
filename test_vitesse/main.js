@@ -9,33 +9,31 @@ ${nav}
 <input type="hidden" name="" id="valeur_cacher" value="200">
 <p >Compteur: <strong id="chiffre_start">200</strong></p>
 
-
+<!-- <button id="rafraichir">rafraichir</button> -->
 
 </main>
 `;
+// let rafraichir = document.querySelector("#rafraichir");
+// rafraichir.addEventListener("click", () => {});
+
 let envoierbutton_id = document.querySelector("#start_temps");
 let commencer_temp;
 envoierbutton_id.addEventListener("click", () => {
-  // let valeur_input = document.querySelector("#start_temps");
-
   let valeur_inputcacher_chiffre = parseInt(
     document.querySelector("#valeur_cacher").value
   );
   if (!commencer_temp) {
+    commencer_temp = setInterval(temps, 20);
     // valeur_input.innerHTML =
     //   "Cliquez-ici pour arreter le compteur<br>(cliquez de nouveau pour arreter le chrono)";
-
-    commencer_temp = setInterval(temps, 15);
-  } else if (commencer_temp) {
+  } else if (commencer_temp || valeur_inputcacher_chiffre == -25) {
     clearInterval(commencer_temp);
-    console.log(valeur_inputcacher_chiffre);
 
     affichage(presdu_0(valeur_inputcacher_chiffre));
 
     // commencer_temp = null;
     // pour recliquer et redemarrer le timer
   }
-  // affichage(valeur_input_chiffre);
 });
 
 function temps() {
@@ -43,6 +41,9 @@ function temps() {
   let valeur_input_chiffre = parseInt(valeur_input.textContent);
   let valeur_inputcacher = document.querySelector("#valeur_cacher");
   let valeur_inputcacher_chiffre = parseInt(valeur_inputcacher.value);
+  if (valeur_inputcacher_chiffre == -25) {
+    return affichage(presdu_0(valeur_inputcacher_chiffre));
+  }
   valeur_input.innerHTML = valeur_input_chiffre - 1;
   valeur_inputcacher.value = valeur_inputcacher_chiffre - 1;
 }
@@ -152,6 +153,9 @@ function presdu_0(valeur) {
 
     case -10:
       return "Temps réalisé: -10, tu as battu le record de lenteur !";
+
+    case -25:
+      return "Temps arreter, Game Over";
 
     default:
       return "Temps réalisé: " + valeur + ", j'ai connu mieux !";

@@ -54,6 +54,9 @@ h3 {
 #app {
   margin: auto;
 }
+#chiffre_start {
+  font-size: 1.3em;
+}
 main {
   align-content: center;
   display: flex;
@@ -62,6 +65,10 @@ main {
   justify-content: center;
   text-align: center;
 }
+.buttoncategorie {
+  padding: 0.25em;
+}
+
 p {
   word-wrap: break-word;
 }
