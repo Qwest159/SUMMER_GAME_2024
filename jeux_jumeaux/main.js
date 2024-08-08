@@ -1,4 +1,5 @@
 import { nav } from "../navigation/nav.js";
+import { rafraichir } from "../function_pour_tous/function_pour_tous.js";
 let vie = 99;
 let jeux = {
   tableau1: [
@@ -35,24 +36,34 @@ ${nav}
     <p><strong>Histoire, Géographie, Philosophie, Littérature, Art, Musique, Science, Mathématiques, Politique, Économie, Biologie, Chimie, Physique, Sociologie, Psychologie</strong> </p>
       <p>Votre mot doit correspondre à l'adversaire pour gagner (sur un total de 7 mots aléatoires choisit par l'ordinateur)</p>
               <input  id="valeur" placeholder="Ecrivez ici le mot" autocomplete="off">
+              <article>
               <button id="reponse_client">Envoiez le mot</button>
+              <button id="rafraichir">Rafraichir</button>
+
+              </article>
+              <h3 class="reponse"></h3>  
 </main>
-      `;
+
+
+`;
+rafraichir("rafraichir");
+function affichage(contenus) {
+  let h3existe = document.querySelector("h3");
+  if (h3existe) {
+    document.querySelector("#app").removeChild(h3existe);
+  }
+  let contenu = contenus;
+  let divapp = document.querySelector(".reponse");
+  divapp.innerHTML = contenu;
+}
 
 let button = document.querySelector("#reponse_client");
 
 button.addEventListener("click", () => {
-  let contenu = affichage(jeux);
-  let divcreer = document.createElement("h3");
-  divcreer.innerHTML = contenu;
-  let existeh3 = document.querySelector("h3");
-  if (existeh3) {
-    document.querySelector("#app").removeChild(existeh3);
-  }
-  document.querySelector("#app").appendChild(divcreer);
+  affichage(vrai_jeux());
 });
 
-function affichage() {
+function vrai_jeux() {
   let valeur_client = document.querySelector("#valeur");
 
   if (vie > 0) {

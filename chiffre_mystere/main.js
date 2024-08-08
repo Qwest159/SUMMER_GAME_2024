@@ -3,6 +3,7 @@
 // si chiffrerecup et different de chiffre mystere => perdu
 // si vie = 0 => game over
 import { nav } from "../navigation/nav.js";
+import { rafraichir } from "../function_pour_tous/function_pour_tous.js";
 const chiffre_mystere = Math.floor(Math.random() * 101);
 
 document.querySelector("#app").innerHTML = `
@@ -12,22 +13,33 @@ ${nav}
 <p>Ecrivez un chiffre de <strong>0</strong> à <strong>100</strong></p>
 <input type="number" name="chiffre" id="chiffre" 
 placeholder="Ecrivez-ici" autocomplete="off"/>
+<article> 
 <button type="button" id="button">Envoyer</button>
+<button id="rafraichir">Rafraichir</button></article>
+<h3 class="reponse"></h3>
 </main>
 
-`;
 
+`;
+rafraichir("rafraichir");
 function affichage(contenus) {
   let contenu = contenus;
-  let divapp = document.querySelector("#app");
-  let divh3 = document.createElement("h3");
-  divh3.innerHTML = contenu;
-  let existeh3 = document.querySelector("h3");
-  if (existeh3) {
-    divapp.removeChild(existeh3);
-  }
-  divapp.appendChild(divh3);
+  let divapp = document.querySelector(".reponse");
+  divapp.innerHTML = contenu;
 }
+
+// function affichage(contenus) {
+//   let contenu = contenus;
+//   let divapp = document.querySelector("#app");
+//   let divh3 = document.createElement("h3");
+//   divh3.innerHTML = contenu;
+//   let existeh3 = document.querySelector("h3");
+//   if (existeh3) {
+//     divapp.removeChild(existeh3);
+//   }
+//   divapp.appendChild(divh3);
+// }
+
 let vie = 7;
 
 function jouer() {

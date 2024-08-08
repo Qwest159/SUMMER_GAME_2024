@@ -27,14 +27,15 @@ export function jeu_pendu() {
 <main>   <h1> Choissisez la catégorie</h1>
 
 <ul>
-<li>Ecrivez le mot: <button class="buttoncategorie" id="aléatoire">aléatoire</button> si vous souhaitez une catégorie choisie par l'ordinateur</li>
-<li>Ecrivez l'une des catégories suivantes: <li id="groupecategorie"></li></li>
+<li>En cliquant sur:<button class="buttoncategorie" id="aléatoire">aléatoire</button> </li>
+<li>Ou en cliquant sur l'une des catégories suivantes: <p id="groupecategorie"></p></li>
 </ul>
 
 
 </main>
  
     `;
+
   categorie_affichage();
   // <main>   <h1> Choissisez la catégorie</h1>
 
@@ -65,9 +66,11 @@ export function jeu_pendu() {
     button.addEventListener("click", () => {
       dernierclick = button.textContent;
 
-      let reponseclient = document.getElementById(dernierclick);
+      let reponseclient_categorie = document.getElementById(dernierclick);
 
-      const { mota_trouver, categorie } = categorie_motchoisis(reponseclient);
+      const { mota_trouver, categorie } = categorie_motchoisis(
+        reponseclient_categorie
+      );
 
       if (mota_trouver) {
         let h3existe = document.querySelector("h3");
@@ -88,38 +91,72 @@ export function jeu_pendu() {
 
         //////COMMENCEMENT DU JEU /////////
         envoieclient.addEventListener("click", () => {
-          let h3existe = document.querySelector("h3");
-          if (h3existe) {
-            document.querySelector("#app").removeChild(h3existe);
-          }
-          let reponseclient = document.querySelector(
-            "#reponse_utilisateur_lettre"
-          );
+          let h3reponse = document.querySelector(".reponse");
+          h3reponse.innerHTML = "";
 
+          let envoieclient_lettre = document
+            .querySelector("#reponse_utilisateur_lettre")
+            .value.trim()
+            .toLowerCase();
           if (
-            reponseclient.value.trim().length == 1 ||
-            reponseclient.value.trim().toLowerCase().length ==
-              mota_trouver.length
+            envoieclient_lettre.length == 1 ||
+            envoieclient_lettre.length == mota_trouver.length
           ) {
             if (
-              reponseclient.value &&
-              !tableau_vrai.includes(
-                reponseclient.value.trim().toLowerCase()
-              ) &&
-              !tableau_faux.includes(reponseclient.value.trim().toLowerCase())
+              !tableau_vrai.includes(envoieclient_lettre) &&
+              !tableau_faux.includes(envoieclient_lettre)
             ) {
               traitement_reponse_client(
-                reponseclient.value.trim().toLowerCase(),
+                envoieclient_lettre,
                 mot_tableau,
                 tableau_vrai,
                 tableau_faux,
                 vie
               );
             } else {
-              affichage("Vous avez déjà repeté cette lettre", "h3");
+              affichage("Vous avez déjà repeté cette lettre");
             }
           } else {
-            affichage("Vous devez écrire une lettre", "h3");
+            affichage("Vous devez écrire une lettre");
+          }
+
+          if (
+            envoieclient_lettre == mota_trouver ||
+            reponse_pendu(mot_tableau, tableau_vrai) === "gagner"
+          ) {
+            return (document.querySelector("#app").innerHTML = `
+            
+                  <main>
+                  ${nav}
+                  <h1>Gagner</h1>
+          <p>Toutes mes félicitations.</p>
+          <p>Le mot a trouvé: <strong>${mot}</strong></p>
+          </main>
+          <div id="imggroupe">
+            <figure id="groupe1">
+       
+              <img class="explosion" src="./image/explosion.png" alt="fusée" />
+              <img class="fusee" src="./image/fusée.png" alt="fusée" />
+            </figure>
+            <figure id="groupe2">
+    
+              <img
+                id="explosion"
+                src="./image/explo2centrale.png"
+                alt="fusée"
+              />
+              <img id="fusee" src="./image/fusee2centrale.png" alt="fusée" />
+            </figure>
+            <figure id="groupe3">
+        
+              <img class="explosion" src="./image/explosion.png" alt="fusée" />
+              <img class="fusee" src="./image/fusee3droite.png" alt="fusée" />
+            </figure>
+                `);
+          }
+          /////// ACTUALISER LES ELEMENTS /////////
+          if (vierestante(vie, tableau_faux) >= 1) {
+            actualiser_afficher_innerhtml(mot_tableau);
           }
           if (vierestante(vie, tableau_faux) == 0) {
             return (document.querySelector("#app").innerHTML = `
@@ -131,69 +168,31 @@ export function jeu_pendu() {
           </main>
           `);
           }
-          if (
-            reponseclient.value.trim().toLowerCase() == mota_trouver ||
-            reponse_pendu(mot_tableau, tableau_vrai) === "gagner"
-          ) {
-            return (document.querySelector("#app").innerHTML = `
-            
-                  <main>
-                  ${nav}
-                  <h1>Gagner</h1>
-          <p>Toutes mes félicitations.</p>
-          <p>Le mot a trouvé: <strong>${mot}</strong></p>
-          <div id="imggroupe">
-            <figure id="groupe1">
-              <img class="fusee" src="./image/fusée.png" alt="fusée" />
-              <img class="explosion" src="./image/explosion.png" alt="fusée" />
-            </figure>
-            <figure id="groupe2">
-              <img id="fusee" src="./image/fusee2centrale.png" alt="fusée" />
-              <img
-                id="explosion"
-                src="./image/explo2centrale.png"
-                alt="fusée"
-              />
-            </figure>
-            <figure id="groupe3">
-              <img class="fusee" src="./image/fusee3droite.png" alt="fusée" />
-              <img class="explosion" src="./image/explosion.png" alt="fusée" />
-            </figure>
-       
-          </main>
-                `);
-          }
-
-          /////// ACTUALISER LES ELEMENTS /////////
-          if (vierestante(vie, tableau_faux) >= 1) {
-            actualiser_afficher_innerhtml(mot_tableau, reponseclient);
-          }
         });
       } else {
-        affichage("Mot mal écrit", "h3");
+        affichage("Mot mal écrit");
       }
     });
   });
 }
 
-function affichage(contenu, element) {
-  let contenus = contenu;
-  let affichagehtml = document.querySelector("#app");
-  let h3 = document.createElement(element);
-
-  let h3existe = document.querySelector(element);
-  if (h3existe) {
-    affichagehtml.removeChild(h3existe);
-  }
-  h3.innerHTML = contenus;
-  affichagehtml.appendChild(h3);
+function affichage(contenus) {
+  let contenu = contenus;
+  let divapp = document.querySelector(".reponse");
+  divapp.innerHTML = contenu;
 }
 
 function actualisation_element(id, contenu) {
-  return (document.getElementById(id).innerHTML = contenu);
+  if (id == "reponse_utilisateur_lettre") {
+    return (document.getElementById(id).value = contenu);
+  } else {
+    return (document.getElementById(id).innerHTML = contenu);
+  }
 }
 
-function actualiser_afficher_innerhtml(mot_tableau, reponseclient) {
+function actualiser_afficher_innerhtml(mot_tableau) {
+  actualisation_element("reponse_utilisateur_lettre", "");
+
   actualisation_element(
     "bonnes_lettres",
     "Bonne(s) lettre(s): <strong id='bonne'>" + tableau_vrai + "</strong>"
@@ -202,7 +201,7 @@ function actualiser_afficher_innerhtml(mot_tableau, reponseclient) {
     "mauvaises_lettres",
     "Mauvaise(s) lettre(s): <strong id='mauvaise'>" + tableau_faux + "</strong>"
   );
-  actualisation_element("reponse_utilisateur_lettre", "Ecrivez-");
+
   actualisation_element("mot", reponse_pendu(mot_tableau, tableau_vrai));
   if (vierestante(vie, tableau_faux) > 5) {
     actualisation_element(
@@ -227,9 +226,4 @@ function actualiser_afficher_innerhtml(mot_tableau, reponseclient) {
     );
 
   //actualiser pas correct à 100% , car il ne prend reprend pas l'input
-
-  actualisation_element(
-    "reponse_utilisateur_lettre",
-    (reponseclient.value = "")
-  );
 }

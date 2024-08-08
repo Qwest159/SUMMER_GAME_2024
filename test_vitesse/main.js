@@ -1,18 +1,26 @@
 import { nav } from "../navigation/nav.js";
+import { presdu_0 } from "./storage.js";
+import { rafraichir } from "../function_pour_tous/function_pour_tous.js";
+
 document.querySelector("#app").innerHTML = `
 ${nav}
-<main>
+<main class="main">
   <h1>Test de rapidité</h1>
-  <p>Un chrono va se lancer(celui du compteur), le but est d'arriver à 0</p>
-<button type="submit" id="start_temps">Cliquez-ici pour commencer<br>(cliquez de nouveau pour arreter le chrono)</button>
+
+  <p>Le compteur va se diminuer en cliquant sur le bouton noir, le but est d'arriver à 0</p>
+<p>Cliquez de nouveau pour arreter le compteur</p>
+  <article><button type="submit" id="start_temps">Cliquez-ici pour commencer<br></button>
+
+<button id="rafraichir">rafraichir</button></article>
 
 <input type="hidden" name="" id="valeur_cacher" value="200">
 <p >Compteur: <strong id="chiffre_start">200</strong></p>
-
-<!-- <button id="rafraichir">rafraichir</button> -->
-
+<h3 class="reponse"></h3>
 </main>
+
+
 `;
+rafraichir("rafraichir");
 // let rafraichir = document.querySelector("#rafraichir");
 // rafraichir.addEventListener("click", () => {});
 
@@ -49,115 +57,6 @@ function temps() {
 }
 function affichage(contenus) {
   let contenu = contenus;
-  let divapp = document.querySelector("#app");
-  let divh3 = document.createElement("h3");
-  divh3.innerHTML = contenu;
-  let existeh3 = document.querySelector("h3");
-  if (existeh3) {
-    divapp.removeChild(existeh3);
-  }
-  divapp.appendChild(divh3);
-}
-
-function presdu_0(valeur) {
-  switch (valeur) {
-    case 20:
-      return "Temps réalisé: 20, allez, tu peux faire mieux ! C'est très lent.";
-
-    case 19:
-      return "Temps réalisé: 19, juste un peu plus vite !";
-
-    case 18:
-      return "Temps réalisé: 18, presque à la fin.";
-
-    case 17:
-      return "Temps réalisé: 17, on peut encore améliorer.";
-
-    case 16:
-      return "Temps réalisé: 16, tu ralentis.";
-
-    case 15:
-      return "Temps réalisé: 15, presque là !";
-
-    case 14:
-      return "Temps réalisé: 14, il y a encore du chemin.";
-
-    case 13:
-      return "Temps réalisé: 13, pas superstitieux, j'espère ?";
-
-    case 12:
-      return "Temps réalisé: 12, tu t'en rapproches !";
-
-    case 11:
-      return "Temps réalisé: 11, un peu plus de vitesse !";
-
-    case 10:
-      return "Temps réalisé: 10, la moyenne ! Pas mal, mais peut mieux faire.";
-
-    case 9:
-      return "Temps réalisé: 9, continue à pousser !";
-
-    case 8:
-      return "Temps réalisé: 8, presque à mi-chemin.";
-
-    case 7:
-      return "Temps réalisé: 7, tu peux encore mieux faire.";
-
-    case 6:
-      return "Temps réalisé: 6, ça commence à ralentir.";
-
-    case 5:
-      return "Temps réalisé: 5, la moitié du chemin vers la perfection.";
-
-    case 4:
-      return "Temps réalisé: 4, tu n'es pas loin du top.";
-
-    case 3:
-      return "Temps réalisé: 3 ! Encore un peu d'effort.";
-
-    case 2:
-      return "Temps réalisé: 2 ! Tu vas vite, mais tu peux encore accélérer.";
-
-    case 1:
-      return "Temps réalisé: 1 ? Presque parfait, mais pas tout à fait.";
-
-    case 0:
-      return "Temps réalisé: 0 ! Réussi ! Tu es un champion de la rapidité !";
-
-    case -1:
-      return "Temps réalisé: -1 ? Tu étais très près, mais c'est raté.";
-
-    case -2:
-      return "Temps réalisé: -2 ! Tu es allé un peu trop loin.";
-
-    case -3:
-      return "Temps réalisé: -3 ! Tu deviens un expert en lenteur.";
-
-    case -4:
-      return "Temps réalisé: -4, presque une performance à l'envers.";
-
-    case -5:
-      return "Temps réalisé: -5, tu es dans le territoire des tortues.";
-
-    case -6:
-      return "Temps réalisé: -6, à ce rythme, on va se coucher.";
-
-    case -7:
-      return "Temps réalisé: -7, on dirait que tu recules.";
-
-    case -8:
-      return "Temps réalisé: -8, c'est un record... de lenteur.";
-
-    case -9:
-      return "Temps réalisé: -9, la lenteur incarnée.";
-
-    case -10:
-      return "Temps réalisé: -10, tu as battu le record de lenteur !";
-
-    case -25:
-      return "Temps arreter, Game Over";
-
-    default:
-      return "Temps réalisé: " + valeur + ", j'ai connu mieux !";
-  }
+  let divapp = document.querySelector(".reponse");
+  divapp.innerHTML = contenu;
 }

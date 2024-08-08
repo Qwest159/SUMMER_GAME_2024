@@ -64,6 +64,7 @@ main {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  position: relative;
 }
 .buttoncategorie {
   padding: 0.25em;
@@ -91,8 +92,21 @@ li {
 }
 div#imggroupe {
   display: flex;
+  justify-content: space-between;
 }
-@keyframes fusee {
+#groupe1,
+#groupe2,
+#groupe3 {
+  display: flex;
+  flex-direction: column;
+}
+.fusee,
+#fusee {
+  position: relative;
+  bottom: 0;
+}
+
+@keyframes fuseegroupee {
   0% {
     bottom: 0vh;
   }
@@ -106,9 +120,7 @@ div#imggroupe {
   }
 }
 .fusee {
-  animation: fusee 5s infinite;
-  bottom: 0;
-  position: absolute;
+  animation: fuseegroupee 5s infinite;
 }
 
 @keyframes explosion {
@@ -140,10 +152,9 @@ div#imggroupe {
     opacity: 0;
   }
 }
+
 #fusee {
   animation: fuseecent 10s infinite;
-  bottom: 0;
-  position: absolute;
 }
 
 @keyframes explosioncent {
@@ -175,8 +186,52 @@ div#imggroupe {
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 600px) {
+#rafraichir {
+  background-color: red;
+}
+.reponse {
+  text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
   body {
     font-size: 1em;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  .fusee,
+  #fusee {
+    position: relative;
+    bottom: 0;
+  }
+  @keyframes fuseegroupee {
+    0% {
+      bottom: -15vh;
+    }
+    30% {
+      bottom: 5vh;
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes fuseecent {
+    0% {
+      bottom: -15vh;
+    }
+    15% {
+      bottom: 5vh;
+    }
+    20% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 }
