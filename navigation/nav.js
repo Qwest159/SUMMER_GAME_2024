@@ -4,6 +4,7 @@ const urls = [
   { url: "/jeux_jumeaux/index.html", nom: "Jeux des Jumeaux" },
   { url: "/pendu/index.html", nom: "Pendu" },
   { url: "/test_vitesse/index.html", nom: "Test de vitesse" },
+  { url: "/quiz/index.html", nom: "Quiz" },
 ];
 let pageactuelle = window.location.pathname;
 
