@@ -235,3 +235,9 @@ div#imggroupe {
     }
   }
 }
+
+/* /////QUIZZZZ///// */
+div#choix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
