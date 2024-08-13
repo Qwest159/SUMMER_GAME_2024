@@ -17,10 +17,7 @@ ${nav}
   <h3 id="question"></h3>
  <div id= "choix"></div>
 </div>
-
-
-
-<section id="contenu_reponse"></section>
+<article id="contenu_reponse"></article>
 </main>
 
 

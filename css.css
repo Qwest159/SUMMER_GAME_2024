@@ -205,10 +205,10 @@ div#choix {
   grid-template-columns: 1fr 1fr;
   gap: 1em;
 }
-section#contenu_reponse {
-  align-self: center;
+article#contenu_reponse {
   width: 70%;
   margin: auto;
+  font-size: 1.1em;
 }
 @media screen and (max-width: 1000px) {
   body {
