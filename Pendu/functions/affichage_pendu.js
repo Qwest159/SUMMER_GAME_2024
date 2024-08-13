@@ -21,7 +21,7 @@ export function affichage_pendu(
     <input type="text" id="reponse_utilisateur_lettre" placeholder ="Ecrivez-ici" autocomplete="off">
  
     
-    <article>
+    <article id="espacement_button"> 
     <button type="submit" id="envoier_lettre">Envoiez</button>
 <button id="rafraichir">Rafraichir</button>
 

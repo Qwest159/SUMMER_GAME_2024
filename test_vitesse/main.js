@@ -9,7 +9,10 @@ ${nav}
 
   <p>Le compteur va se diminuer en cliquant sur le bouton noir, le but est d'arriver à 0</p>
 <p>Cliquez de nouveau pour arreter le compteur</p>
-  <article><button type="submit" id="start_temps">Cliquez-ici pour commencer<br></button>
+  <article id="espacement_button"> 
+    
+  
+  <button type="submit" id="start_temps">Cliquez-ici pour commencer<br></button>
 
 <button id="rafraichir">rafraichir</button></article>
 

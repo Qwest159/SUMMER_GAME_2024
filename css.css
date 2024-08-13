@@ -24,6 +24,11 @@ body {
   list-style-type: none;
 }
 
+article#espacement_button {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2em;
+}
 /* ///// JEU HASARD ////// */
 
 button {
@@ -34,7 +39,7 @@ button {
   color: white;
   border: none;
   padding: 1em 1.5em;
-  align-self: center;
+
   border-radius: 1em;
 
   /* margin: auto; */
@@ -187,12 +192,24 @@ div#imggroupe {
 }
 
 #rafraichir {
-  background-color: red;
+  background-color: rgb(0, 191, 255);
 }
 .reponse {
   text-align: center;
 }
 
+/* /////QUIZZZZ///// */
+div#choix {
+  margin-top: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+section#contenu_reponse {
+  align-self: center;
+  width: 70%;
+  margin: auto;
+}
 @media screen and (max-width: 1000px) {
   body {
     font-size: 1em;
@@ -234,12 +251,4 @@ div#imggroupe {
       opacity: 0;
     }
   }
-}
-
-/* /////QUIZZZZ///// */
-div#choix {
-  margin-top: 1em;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1em;
 }

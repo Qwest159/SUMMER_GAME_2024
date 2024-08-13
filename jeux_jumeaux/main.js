@@ -36,7 +36,8 @@ ${nav}
     <p><strong>Histoire, Géographie, Philosophie, Littérature, Art, Musique, Science, Mathématiques, Politique, Économie, Biologie, Chimie, Physique, Sociologie, Psychologie</strong> </p>
       <p>Votre mot doit correspondre à l'adversaire pour gagner (sur un total de 7 mots aléatoires choisit par l'ordinateur)</p>
               <input  id="valeur" placeholder="Ecrivez ici le mot" autocomplete="off">
-              <article>
+              
+              <article id="espacement_button"> 
               <button id="reponse_client">Envoiez le mot</button>
               <button id="rafraichir">Rafraichir</button>
 
@@ -47,15 +48,6 @@ ${nav}
 
 `;
 rafraichir("rafraichir");
-function affichage(contenus) {
-  let h3existe = document.querySelector("h3");
-  if (h3existe) {
-    document.querySelector("#app").removeChild(h3existe);
-  }
-  let contenu = contenus;
-  let divapp = document.querySelector(".reponse");
-  divapp.innerHTML = contenu;
-}
 
 let button = document.querySelector("#reponse_client");
 
@@ -80,7 +72,13 @@ function vrai_jeux() {
     return "Nombre d'essai: " + vie + "<br>Partie terminée";
   }
 }
+function affichage(contenus) {
+  let contenu = contenus;
+  let divapp = document.querySelector(".reponse");
+  divapp.innerHTML = "";
 
+  divapp.innerHTML = contenu;
+}
 function repetition_erreur(valeur_client) {
   let message = "";
   let test = 0;

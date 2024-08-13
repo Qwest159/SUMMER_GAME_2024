@@ -13,7 +13,7 @@ ${nav}
 <p>Ecrivez un chiffre de <strong>0</strong> à <strong>100</strong></p>
 <input type="number" name="chiffre" id="chiffre" 
 placeholder="Ecrivez-ici" autocomplete="off"/>
-<article> 
+<article id="espacement_button"> 
 <button type="button" id="button">Envoyer</button>
 <button id="rafraichir">Rafraichir</button></article>
 <h3 class="reponse"></h3>
