@@ -210,6 +210,14 @@ article#contenu_reponse {
   margin: auto;
   font-size: 1.1em;
 }
+.joker {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  background-color: rgb(92, 179, 0);
+  width: 6em;
+  text-align: center;
+}
 @media screen and (max-width: 1000px) {
   body {
     font-size: 1em;
@@ -250,5 +258,8 @@ article#contenu_reponse {
     100% {
       opacity: 0;
     }
+  }
+  .joker {
+    left: 0;
   }
 }
