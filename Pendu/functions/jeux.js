@@ -20,7 +20,7 @@ import {
   traitement_reponse_client,
   vierestante,
 } from "./traitement_reponse.js";
-
+import { rafraichir } from "../../function_pour_tous/function_pour_tous.js";
 export function jeu_pendu() {
   document.querySelector("#app").innerHTML = `
   ${nav}
@@ -89,6 +89,92 @@ export function jeu_pendu() {
 
         let envoieclient = document.querySelector("#envoier_lettre");
 
+        let envoieclient_lettre_button = document.querySelector(
+          "#reponse_utilisateur_lettre"
+        );
+        function handleKeyDown(event) {
+          if (event.key === "Enter") {
+            let h3reponse = document.querySelector(".reponse");
+            h3reponse.innerHTML = "";
+
+            let envoieclient_lettre = document
+              .querySelector("#reponse_utilisateur_lettre")
+              .value.trim()
+              .toLowerCase();
+
+            if (
+              envoieclient_lettre.length == 1 ||
+              envoieclient_lettre.length == mota_trouver.length
+            ) {
+              if (
+                !tableau_vrai.includes(envoieclient_lettre) &&
+                !tableau_faux.includes(envoieclient_lettre)
+              ) {
+                traitement_reponse_client(
+                  envoieclient_lettre,
+                  mot_tableau,
+                  tableau_vrai,
+                  tableau_faux,
+                  vie
+                );
+              } else {
+                affichage("Vous avez déjà repeté cette lettre");
+              }
+            } else {
+              affichage("Vous devez écrire une lettre");
+            }
+
+            if (
+              envoieclient_lettre == mota_trouver ||
+              reponse_pendu(mot_tableau, tableau_vrai) === "gagner"
+            ) {
+              return (document.querySelector("#app").innerHTML = `
+              
+                    <main>
+                    ${nav}
+                    <h1>Gagner</h1>
+            <p>Toutes mes félicitations.</p>
+            <p>Le mot a trouvé: <strong>${mot}</strong></p>
+            </main>
+            <div id="imggroupe">
+              <figure id="groupe1">
+         
+                <img class="explosion" src="./image/explosion.png" alt="fusée" />
+                <img class="fusee" src="./image/fusée.png" alt="fusée" />
+              </figure>
+              <figure id="groupe2">
+      
+                <img
+                  id="explosion"
+                  src="./image/explo2centrale.png"
+                  alt="fusée"
+                />
+                <img id="fusee" src="./image/fusee2centrale.png" alt="fusée" />
+              </figure>
+              <figure id="groupe3">
+          
+                <img class="explosion" src="./image/explosion.png" alt="fusée" />
+                <img class="fusee" src="./image/fusee3droite.png" alt="fusée" />
+              </figure>
+                  `);
+            }
+            /////// ACTUALISER LES ELEMENTS /////////
+            if (vierestante(vie, tableau_faux) >= 1) {
+              actualiser_afficher_innerhtml(mot_tableau);
+            }
+            if (vierestante(vie, tableau_faux) == 0) {
+              return (document.querySelector("#app").innerHTML = `
+           ${nav}
+                    <main>
+            <h1>GAME OVER</h1>
+            <p>Le mot a trouvé: <strong>${mot}</strong></p>
+            </main>
+            `);
+            }
+          }
+        }
+        envoieclient_lettre_button.addEventListener("keydown", handleKeyDown);
+
         //////COMMENCEMENT DU JEU /////////
         envoieclient.addEventListener("click", () => {
           let h3reponse = document.querySelector(".reponse");
@@ -98,6 +184,7 @@ export function jeu_pendu() {
             .querySelector("#reponse_utilisateur_lettre")
             .value.trim()
             .toLowerCase();
+
           if (
             envoieclient_lettre.length == 1 ||
             envoieclient_lettre.length == mota_trouver.length
@@ -160,7 +247,6 @@ export function jeu_pendu() {
           }
           if (vierestante(vie, tableau_faux) == 0) {
             return (document.querySelector("#app").innerHTML = `
-         
          ${nav}
                   <main>
           <h1>GAME OVER</h1>

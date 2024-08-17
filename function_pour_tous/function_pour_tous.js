@@ -23,7 +23,7 @@ export function affichage(
   // affichagehtml.innerHTML = "";
   let h3 = document.createElement(balise);
 
-  let h3existe = document.querySelector(balise);
+  let h3existe = document.getElementById(balise);
   if (h3existe) {
     affichagehtml.removeChild(h3existe);
   }

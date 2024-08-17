@@ -8,7 +8,7 @@ import { liste } from "./storage.js";
 // 1) aparaitre les questions + reponse
 // 2) button click sur le bouton reponse du client
 // 3) comparer la reponse donnée avec la vraie reponse
-let numero = 0;
+let index_questions = 0;
 let vie_joker_50_50 = 1;
 document.querySelector("#app").innerHTML = `
 ${nav}
@@ -40,7 +40,7 @@ function jeux_quiz() {
   }
 
   liste.forEach((element) => {
-    if (element.id == numero) {
+    if (element.id == index_questions) {
       questions.innerHTML = element.question;
 
       ////PARTIE ALEATOIRE //////
@@ -85,22 +85,26 @@ function jeux_quiz() {
   let buttons_choix = document.querySelectorAll(".choix_reponse");
 
   let joker = document.querySelector("#joker");
+
   joker.addEventListener("click", () => {
-    if (vie_joker_50_50 === 1) {
-      let buttons_choix_joker = document.querySelectorAll(".choix_reponse");
+    let buttons_choix_joker = document.querySelectorAll(".choix_reponse");
+
+    if (vie_joker_50_50 === 1 && buttons_choix_joker.length != 0) {
       let button_choix_array = [...buttons_choix_joker];
       let reponsefausse = "";
-      if (button_choix_array[0].textContent == liste[numero].reponse) {
+      if (button_choix_array[0].textContent == liste[index_questions].reponse) {
         reponsefausse = button_choix_array[1].textContent;
       } else {
         reponsefausse = button_choix_array[0].textContent;
       }
-      actualisation_element(button_choix_array[0].textContent, "");
-      actualisation_element(button_choix_array[1].textContent, "");
-      actualisation_element(button_choix_array[2].textContent, "");
-      actualisation_element(button_choix_array[3].textContent, "");
+      for (let index = 0; index < button_choix_array.length; index++) {
+        actualisation_element(button_choix_array[index].textContent, "");
+      }
       actualisation_element(reponsefausse, reponsefausse);
-      actualisation_element(liste[numero].reponse, liste[numero].reponse);
+      actualisation_element(
+        liste[index_questions].reponse,
+        liste[index_questions].reponse
+      );
       joker.style.background = "red";
       vie_joker_50_50 = vie_joker_50_50 - 1;
     }
@@ -114,34 +118,40 @@ function jeux_quiz() {
     buttons.addEventListener("click", () => {
       if (vie == 1 && buttons.textContent != "") {
         let button_click = buttons.textContent;
-        let rajout = document.querySelector("#contenu_reponse");
+        let article = document.querySelector("#contenu_reponse");
         let choix_button = document.createElement("button");
 
         // ATTENTION PLUSIEURS CLICK POSSIBLE  => REPARER
         vie = vie - 1;
-        if (liste[numero].reponse == button_click) {
-          rajout.innerHTML = "Bien joué";
-          document.getElementById(liste[numero].reponse).style.backgroundColor =
-            "green";
+        if (liste[index_questions].reponse == button_click) {
+          article.innerHTML = "Bien joué";
+          document.getElementById(
+            liste[index_questions].reponse
+          ).style.backgroundColor = "green";
         } else {
-          rajout.innerHTML = "La bonne réponse est : " + liste[numero].reponse;
+          article.innerHTML =
+            "La bonne réponse est : " + liste[index_questions].reponse;
           document.getElementById(buttons.id).style.backgroundColor = "red";
-          document.getElementById(liste[numero].reponse).style.backgroundColor =
-            "green";
+          document.getElementById(
+            liste[index_questions].reponse
+          ).style.backgroundColor = "green";
         }
         // AFFICHAGE DES REPONSES
 
-        affichage(liste[numero].reponse_informations, "p", "#contenu_reponse");
+        affichage(
+          liste[index_questions].reponse_informations,
+          "p",
+          "#contenu_reponse"
+        );
 
         choix_button.className = "envoier";
         choix_button.textContent = "Question suivante";
-        rajout.appendChild(choix_button);
+        article.appendChild(choix_button);
 
         let button_envoier = document.querySelector(".envoier");
         button_envoier.addEventListener("click", () => {
-          let rajout = document.querySelector("#contenu_reponse");
-          rajout.innerHTML = "";
-          jeux_quiz((numero = numero + 1));
+          article.innerHTML = "";
+          jeux_quiz((index_questions = index_questions + 1));
         });
       }
     });

@@ -1,4 +1,4 @@
-export function presdu_0(valeur) {
+export function storage_donnee(valeur) {
   switch (valeur) {
     case 20:
       return "Temps réalisé: 20, allez, tu peux faire mieux ! C'est très lent.";
@@ -94,7 +94,7 @@ export function presdu_0(valeur) {
       return "Temps réalisé: -10, tu as battu le record de lenteur !";
 
     case -25:
-      return "Temps arreter, Game Over";
+      return "Temps arrêté, Game Over";
 
     default:
       return "Temps réalisé: " + valeur + ", j'ai connu mieux !";

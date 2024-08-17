@@ -1,5 +1,5 @@
 import { nav } from "../navigation/nav.js";
-import { presdu_0 } from "./storage.js";
+import { storage_donnee } from "./storage.js";
 import { rafraichir } from "../function_pour_tous/function_pour_tous.js";
 
 document.querySelector("#app").innerHTML = `
@@ -16,8 +16,8 @@ ${nav}
 
 <button id="rafraichir">rafraichir</button></article>
 
-<input type="hidden" name="" id="valeur_cacher" value="200">
-<p >Compteur: <strong id="chiffre_start">200</strong></p>
+<input type="hidden" name="" id="valeur_cacher" value="100">
+<p >Compteur: <strong id="chiffre_start">100</strong></p>
 <h3 class="reponse"></h3>
 </main>
 
@@ -40,7 +40,7 @@ envoierbutton_id.addEventListener("click", () => {
   } else if (commencer_temp || valeur_inputcacher_chiffre == -25) {
     clearInterval(commencer_temp);
 
-    affichage(presdu_0(valeur_inputcacher_chiffre));
+    affichage(storage_donnee(valeur_inputcacher_chiffre));
 
     // commencer_temp = null;
     // pour recliquer et redemarrer le timer
@@ -53,7 +53,7 @@ function temps() {
   let valeur_inputcacher = document.querySelector("#valeur_cacher");
   let valeur_inputcacher_chiffre = parseInt(valeur_inputcacher.value);
   if (valeur_inputcacher_chiffre == -25) {
-    return affichage(presdu_0(valeur_inputcacher_chiffre));
+    return affichage(storage_donnee(valeur_inputcacher_chiffre));
   }
   valeur_input.innerHTML = valeur_input_chiffre - 1;
   valeur_inputcacher.value = valeur_inputcacher_chiffre - 1;

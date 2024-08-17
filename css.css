@@ -41,7 +41,7 @@ button {
   padding: 1em 1.5em;
 
   border-radius: 1em;
-
+  cursor: pointer;
   /* margin: auto; */
 }
 input {
