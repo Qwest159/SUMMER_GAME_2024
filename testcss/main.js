@@ -14,7 +14,7 @@ let vie = 7;
 let tableau_faux = [];
 let tableau_vrai = [];
 let mot = "";
-
+let mota_trouver = "";
 import { categorie_motchoisis, categorie_affichage } from "./categorie.js";
 import { affichage_pendu, reponse_pendu } from "./affichage_pendu.js";
 import {
@@ -36,6 +36,28 @@ export function jeu_pendu() {
     `;
 
   categorie_affichage();
+  // <main>   <h1> Choissisez la catégorie</h1>
+
+  // <ul>
+  // <li>Ecrivez le mot: "<strong>aléatoire</strong>" si vous souhaitez une catégorie choisie par l'ordinateur</li>
+
+  // <li>Ecrivez l'une des catégories suivantes: ${categorie_affichage()}</li>
+  // </ul>
+
+  // <input type="text" id="reponse_utilisateur" placeholder ="Ecrivez-ici" autocomplete="off">
+
+  // <button type="submit" id="envoier">Envoiez</button>
+  // </main>
+
+  // 1) clique sur le bouton
+  // 2) recuperer le bouton
+  // 3) lancer le jeux lié avec ce bouton
+
+  // let envoier = document.querySelector("#envoier");
+  // let reponsealéatoire = document.querySelector("#aléatoire").textContent;
+
+  // envoier.addEventListener("click", () => {
+
   let tousbutton = document.querySelectorAll(".buttoncategorie");
   let dernierclick;
 
@@ -45,16 +67,16 @@ export function jeu_pendu() {
 
       let reponseclient_categorie = document.getElementById(dernierclick);
 
-      const { mot_a_trouver, categorie } = categorie_motchoisis(
+      const { mota_trouver, categorie } = categorie_motchoisis(
         reponseclient_categorie
       );
 
-      if (mot_a_trouver) {
+      if (mota_trouver) {
         let h3existe = document.querySelector("h3");
         if (h3existe) {
           document.querySelector("#app").removeChild(h3existe);
         }
-        mot = mot_a_trouver;
+        mot = mota_trouver;
         let mot_tableau = [...mot];
 
         affichage_pendu(
@@ -74,10 +96,13 @@ export function jeu_pendu() {
       }
     });
   });
+  console.log(mota_trouver);
+  console.log(mot);
 
   function handleKeyDown(event) {
     if (event.key === "Enter" || event.type === "click") {
       const mot_tableau = [...mot];
+      console.log(mota_trouver);
       let h3reponse = document.querySelector(".reponse");
       h3reponse.innerHTML = "";
 
@@ -88,7 +113,7 @@ export function jeu_pendu() {
 
       if (
         envoieclient_lettre.length == 1 ||
-        envoieclient_lettre.length == mot.length
+        envoieclient_lettre.length == mota_trouver.length
       ) {
         if (
           !tableau_vrai.includes(envoieclient_lettre) &&
@@ -109,7 +134,7 @@ export function jeu_pendu() {
       }
 
       if (
-        envoieclient_lettre == mot ||
+        envoieclient_lettre == mota_trouver ||
         reponse_pendu(mot_tableau, tableau_vrai) === "gagner"
       ) {
         return (document.querySelector("#app").innerHTML = `
@@ -143,7 +168,6 @@ export function jeu_pendu() {
             `);
       }
       /////// ACTUALISER LES ELEMENTS /////////
-
       if (vierestante(vie, tableau_faux) >= 1) {
         actualiser_afficher_innerhtml(mot_tableau);
       }

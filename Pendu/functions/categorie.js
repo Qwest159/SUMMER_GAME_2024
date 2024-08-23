@@ -28,14 +28,14 @@ export function categorie_motchoisis(categorieclick) {
     const categorie_aleatoire = categorie[index_aleatoire];
     index_mot = Math.floor(Math.random() * liste[categorie_aleatoire].length);
     return {
-      mota_trouver: liste[categorie_aleatoire][index_mot],
+      mot_a_trouver: liste[categorie_aleatoire][index_mot],
       categorie: categorie_aleatoire,
     };
   } else if (categorie.includes(reponse_text_button)) {
     /////////////////////   CATEGORIE CHOISIE   ////////////////
     index_mot = Math.floor(Math.random() * liste[reponse_text_button].length);
     return {
-      mota_trouver: liste[reponse_text_button][index_mot],
+      mot_a_trouver: liste[reponse_text_button][index_mot],
       categorie: reponse_text_button,
     };
   } else {
@@ -54,7 +54,7 @@ export function categorie_motchoisis(categorieclick) {
 //     const categorie_aleatoire = categorie[index_aleatoire];
 //     index_mot = Math.floor(Math.random() * liste[categorie_aleatoire].length);
 //     return {
-//       mota_trouver: liste[categorie_aleatoire][index_mot],
+//       mot_a_trouver: liste[categorie_aleatoire][index_mot],
 //       categorie: categorie_aleatoire,
 //     };
 //   } else if (categorie.indexOf(reponse_text_button.value.trim().toLowerCase()) >= 0) {
@@ -64,7 +64,7 @@ export function categorie_motchoisis(categorieclick) {
 //     index_mot = Math.floor(Math.random() * liste[categorie_choisie].length);
 
 //     return {
-//       mota_trouver: liste[categorie_choisie][index_mot],
+//       mot_a_trouver: liste[categorie_choisie][index_mot],
 //       categorie: categorie_choisie,
 //     };
 //   } else {

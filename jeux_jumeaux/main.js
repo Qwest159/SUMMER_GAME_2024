@@ -1,3 +1,5 @@
+// reprendre la valeur de l'utilisateur et le mettre en minuscule
+
 import { nav } from "../navigation/nav.js";
 import { rafraichir } from "../function_pour_tous/function_pour_tous.js";
 let vie = 99;
@@ -30,16 +32,16 @@ document.querySelector("#app").innerHTML = `
 ${nav}
 
 <main>
-    <h1>Jeux des jumeaux</h1>
+    <h1>Jeu des jumeaux</h1>
 
-    <p>La régle est simple. Ecrivez l'un des mots suivants :</p>
+    <p>La règle est simple. Ecrivez l'un des mots suivants :</p>
     <p><strong>Histoire, Géographie, Philosophie, Littérature, Art, Musique, Science, Mathématiques, Politique, Économie, Biologie, Chimie, Physique, Sociologie, Psychologie</strong> </p>
-      <p>Votre mot doit correspondre à l'adversaire pour gagner (sur un total de 7 mots aléatoires choisit par l'ordinateur)</p>
-              <input  id="valeur" placeholder="Ecrivez ici le mot" autocomplete="off">
+      <p>Votre mot doit correspondre à celui l'adversaire pour gagner (sur un total de 7 mots aléatoires choisi par l'ordinateur)</p>
+              <input  id="valeur" placeholder="Ecrivez le mot ici" autocomplete="off">
               
               <article id="espacement_button"> 
-              <button id="reponse_client">Envoiez le mot</button>
-              <button id="rafraichir">Rafraichir</button>
+              <button id="reponse_client">Envoyez le mot</button>
+              <button id="rafraichir">Rafraîchir</button>
 
               </article>
               <h3 class="reponse"></h3>  
@@ -86,7 +88,9 @@ function repetition_erreur(valeur_client) {
     let actionclient =
       jeux.tableau1[Math.floor(Math.random() * jeux.tableau1.length)];
 
-    if (actionclient === valeur_client.value.trim()) {
+    if (
+      actionclient.toLowerCase() === valeur_client.value.toLowerCase().trim()
+    ) {
       //   actionclient + " " + valeur_client.value;
       return (
         "Gagné. <br> En voici la preuve : " +
@@ -96,7 +100,7 @@ function repetition_erreur(valeur_client) {
         "</span>"
       );
     }
-    message += actionclient + " , ";
+    message += actionclient + ", ";
   }
   return "Perdu. <br> En voici la preuve : " + message;
 }

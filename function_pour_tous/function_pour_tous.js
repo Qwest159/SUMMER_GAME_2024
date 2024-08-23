@@ -16,7 +16,8 @@ export function affichage(
   contenu,
   balise,
   parent_id,
-  id_element_existe = null
+  id_element_existe = null,
+  chemin_image = null
 ) {
   let contenus = contenu;
   let affichagehtml = document.querySelector(parent_id);
@@ -29,6 +30,9 @@ export function affichage(
   }
   if (id_element_existe) {
     h3.id = id_element_existe;
+  }
+  if (chemin_image) {
+    h3.src = chemin_image;
   }
   h3.innerHTML = contenus;
   affichagehtml.appendChild(h3);

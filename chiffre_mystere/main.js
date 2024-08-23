@@ -2,6 +2,11 @@
 // condition si chiffrerecup = chiffre mystere => gagné
 // si chiffrerecup et different de chiffre mystere => perdu
 // si vie = 0 => game over
+
+// rafraichir avec î
+// envoier-ici retirer le trait union
+
+// BUTTON ENTER
 import { nav } from "../navigation/nav.js";
 import { rafraichir } from "../function_pour_tous/function_pour_tous.js";
 const chiffre_mystere = Math.floor(Math.random() * 101);
@@ -12,10 +17,10 @@ ${nav}
 <h1>Jeu du chiffre Mystère</h1>
 <p>Ecrivez un chiffre de <strong>0</strong> à <strong>100</strong></p>
 <input type="number" name="chiffre" id="chiffre" 
-placeholder="Ecrivez-ici" autocomplete="off"/>
+placeholder="Ecrivez ici" autocomplete="off"/>
 <article id="espacement_button"> 
 <button type="button" id="button">Envoyer</button>
-<button id="rafraichir">Rafraichir</button></article>
+<button id="rafraichir">Rafraîchir</button></article>
 <h3 class="reponse"></h3>
 </main>
 
@@ -61,7 +66,7 @@ function jouer() {
 
           if (vie <= 0) {
             console.log(chiffre_mystere);
-            message = "Game Over , le nombre recherché est: " + chiffre_mystere;
+            message = "Game Over, le nombre recherché est: " + chiffre_mystere;
             jeux = false;
             console.log(jeux);
           } else if (chiffre_recup_utilisateur < chiffre_mystere) {

@@ -1,4 +1,4 @@
-export const liste = [
+export let liste = [
   {
     id: 0,
     question: "Quel est le seul mammifère capable de voler ?",
@@ -61,7 +61,7 @@ export const liste = [
     choix: [
       "Désert de Gobi",
       "Désert d'Atacama",
-      "Sahara",
+      "Désert du Sahara",
       "Désert de Kalahari",
     ],
     reponse: "Sahara",

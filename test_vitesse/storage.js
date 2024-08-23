@@ -28,31 +28,31 @@ export function storage_donnee(valeur) {
       return "Temps réalisé: 12, tu t'en rapproches !";
 
     case 11:
-      return "Temps réalisé: 11, un peu plus de vitesse !";
+      return "Temps réalisé: 11, un peu moins vite!";
 
     case 10:
-      return "Temps réalisé: 10, la moyenne ! Pas mal, mais peut mieux faire.";
+      return "Temps réalisé: 10, pas mal, mais tu peux mieux faire.";
 
     case 9:
-      return "Temps réalisé: 9, continue à pousser !";
+      return "Temps réalisé: 9, ne baisse pas les bras !";
 
     case 8:
-      return "Temps réalisé: 8, presque à mi-chemin.";
+      return "Temps réalisé: 8, tu approches";
 
     case 7:
       return "Temps réalisé: 7, tu peux encore mieux faire.";
 
     case 6:
-      return "Temps réalisé: 6, ça commence à ralentir.";
+      return "Temps réalisé: 6, je n'ai pas d'idée, mea culpa ?";
 
     case 5:
-      return "Temps réalisé: 5, la moitié du chemin vers la perfection.";
+      return "Temps réalisé: 5, en route vers la perfection.";
 
     case 4:
       return "Temps réalisé: 4, tu n'es pas loin du top.";
 
     case 3:
-      return "Temps réalisé: 3 ! Encore un peu d'effort.";
+      return "Temps réalisé: 3 ! Encore un petit effort.";
 
     case 2:
       return "Temps réalisé: 2 ! Tu vas vite, mais tu peux encore accélérer.";

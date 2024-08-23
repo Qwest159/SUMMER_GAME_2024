@@ -22,8 +22,8 @@ export function affichage_pendu(
  
     
     <article id="espacement_button"> 
-    <button type="submit" id="envoier_lettre">Envoiez</button>
-<button id="rafraichir">Rafraichir</button>
+    <button type="submit" id="envoier_lettre">Envoyez</button>
+<button id="rafraichir">Rafraîchir</button>
 
 </article>
 <h3 class="reponse"></h3>  

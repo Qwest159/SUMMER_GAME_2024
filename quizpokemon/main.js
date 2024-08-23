@@ -22,8 +22,6 @@ ${nav}
 </main>
 `;
 
-function joker() {}
-
 jeux_quiz();
 function jeux_quiz() {
   let vie = 1;
@@ -141,7 +139,13 @@ function jeux_quiz() {
           "p",
           "#contenu_reponse"
         );
-
+        affichage(
+          "",
+          "img",
+          "#contenu_reponse",
+          null,
+          liste[index_questions].reponse_image
+        );
         choix_button.className = "envoier";
         choix_button.textContent = "Question suivante";
         article.appendChild(choix_button);

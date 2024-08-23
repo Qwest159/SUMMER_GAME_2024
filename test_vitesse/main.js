@@ -2,6 +2,9 @@ import { nav } from "../navigation/nav.js";
 import { storage_donnee } from "./storage.js";
 import { rafraichir } from "../function_pour_tous/function_pour_tous.js";
 
+// inclure
+// changer le format du bouton commencer => arrêter => relancer
+
 document.querySelector("#app").innerHTML = `
 ${nav}
 <main class="main">
@@ -12,9 +15,9 @@ ${nav}
   <article id="espacement_button"> 
     
   
-  <button type="submit" id="start_temps">Cliquez-ici pour commencer<br></button>
+  <button type="submit" id="start_temps">Démarrer<br></button>
 
-<button id="rafraichir">rafraichir</button></article>
+<button id="rafraichir">Rafraîchir</button></article>
 
 <input type="hidden" name="" id="valeur_cacher" value="100">
 <p >Compteur: <strong id="chiffre_start">100</strong></p>
