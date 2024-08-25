@@ -21,18 +21,90 @@ ${nav}
 
 </main>
 `;
+async function donnee() {
+  const requestURL = "http://localhost:5500/quizpokemon/storage_donnee.json";
+  const request = new Request(requestURL);
 
+  const response = await fetch(request);
+  console.log(response);
+
+  const classement = await response.json();
+
+  let utilisateur = document.querySelector("#utilisateur");
+  //savoir si la valeur contient du texte
+  if (/^[A-Za-z]+$/.test(utilisateur.value)) {
+    let nouveauformat = {
+      nom: utilisateur.value,
+      score: 10,
+    };
+    classement.push(nouveauformat);
+    console.log(window.location);
+
+    // ICI ON DEVRA nombre_question = array.length
+    let nombre_question = 20;
+    let donnee = document.querySelector("#app");
+
+    let personne = [];
+    function classement_ordre(nombre_question) {
+      classement.forEach((element) => {
+        if (element.score == nombre_question) {
+          personne.push(element);
+        }
+      });
+    }
+    for (nombre_question; nombre_question >= 0; nombre_question--) {
+      classement_ordre(nombre_question);
+    }
+    for (let index = 0; index < personne.length; index++) {
+      donnee.innerHTML +=
+        "<p>Nom: " +
+        personne[index].nom +
+        " => " +
+        "Score: " +
+        personne[index].score +
+        "</p>";
+    }
+  }
+}
 jeux_quiz();
-function jeux_quiz() {
+async function jeux_quiz() {
   let vie = 1;
   let questions = document.querySelector("#question");
   let div_choix = document.querySelector("#choix");
   let buttonexiste = document.querySelector(".choix_reponse");
-  let index = 0;
 
   if (buttonexiste) {
     div_choix.innerHTML = "";
     questions.innerHTML = "Plus de questions";
+  }
+
+  if (index_questions >= liste.length) {
+    document.querySelector("#app").innerHTML = `
+${nav}
+<main >
+  <button id="joker"></button>
+  <h3>Inscrire votre Prénom</h3>
+<input id="utilisateur" type="text" />
+<button id="envoie">ENVOIER</button>
+</main>
+`;
+    // affichage("rafraichir", "button", ".jeux", "rafraichir");
+    // rafraichir("rafraichir");
+  }
+  let envoie = document.querySelector("#envoie");
+  if (envoie) {
+    envoie.addEventListener("click", () => {
+      //       document.querySelector("#app").innerHTML = `
+      // ${nav}
+      // <main >
+      //   <button id="joker"></button>
+      //   <h3>Inscrire votre Prénom</h3>
+      // <input id="utilisateur" type="text" />
+      // <button id="envoie">ENVOIER</button>
+      // </main>
+      // `;
+      donnee();
+    });
   }
 
   liste.forEach((element) => {
@@ -58,7 +130,7 @@ function jeux_quiz() {
       // 2) faire en sorte que le joker laisse 1 reponse vraie et 1 fausse
       // 3) ATTENTION LE FOR PEUT REMETTRE LA REPONSE VRAIE DANS LA QUESTION
 
-      for (index; index < montableau_index_aleatoire.length; index++) {
+      for (let index = 0; index < montableau_index_aleatoire.length; index++) {
         /////
         let choix_button = document.createElement("button");
 
@@ -106,10 +178,10 @@ function jeux_quiz() {
     }
   });
 
-  if (document.querySelector("#question").textContent == "Plus de questions") {
-    affichage("rafraichir", "button", ".jeux", "rafraichir");
-    rafraichir("rafraichir");
-  }
+  // if (document.querySelector("#question").textContent == "Plus de questions") {
+  //   affichage("rafraichir", "button", ".jeux", "rafraichir");
+  //   rafraichir("rafraichir");
+  // }
   buttons_choix.forEach((buttons) => {
     buttons.addEventListener("click", () => {
       if (vie == 1 && buttons.textContent != "") {

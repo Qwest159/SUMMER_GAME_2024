@@ -1,0 +1,12 @@
+[
+  { "nom": "John", "score": "20" },
+  { "nom": "Anna", "score": "15" },
+  { "nom": "Peter", "score": "20" },
+  { "nom": "Arrrra", "score": "10" },
+
+  { "nom": "Afffff", "score": "2" },
+
+  { "nom": "aaaaa", "score": "1" },
+
+  { "nom": "bbbbb", "score": "10" }
+]
