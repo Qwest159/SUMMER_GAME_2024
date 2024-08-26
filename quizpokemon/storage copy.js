@@ -63,7 +63,7 @@ export let liste = [
   },
   {
     id: 6,
-    question: "Quelle est ce Pokémon ? <br> <img src='./img/qui.png' alt=''>",
+    question: "Quel est ce Pokémon ? <br> <img src='./img/qui.png' alt=''>",
     choix: ["Iguolta", "Motorizard", "Malamandre", "Lézargus"],
     reponse: "Motorizard",
     reponse_informations:
@@ -73,7 +73,7 @@ export let liste = [
   {
     id: 7,
     question:
-      "Quel Pokémon a été inspiré par un bug informatique lors du développement des premiers jeux Pokémon ?",
+      "Qui est le résultat d'un bug informatique dans les premiers jeux Pokémon ?",
     choix: ["MissingNo.", "Porygon", "Fantominus", "Métamorph"],
     reponse: "MissingNo.",
     reponse_informations:
@@ -83,7 +83,7 @@ export let liste = [
   {
     id: 8,
     question: "Quelle est la carte Pokémon vendue la plus chère au monde ?",
-    choix: ["Pikachu", "Dracaufeu", "Tortank", "florizarre"],
+    choix: ["Pikachu", "Dracaufeu", "Tortank", "Florizarre"],
     reponse: "Pikachu",
     reponse_informations:
       "Le Guinness World Records indique que la carte Pokémon la plus chère du monde est la Pikachu Illustrator de grade PSA 10. Pour le moment, c'est la carte la plus chère jamais vendue. Cette carte a été négociée pour 5 275 000 $ par le Youtubeur Logan Paul ",
@@ -94,11 +94,11 @@ export let liste = [
     question: "Peut-on faire évoluer un Pokémon après le niveau 100 ?",
     choix: [
       "Non",
-      "À l'aide d'un Bonbon Rare",
-      "Super Bonbon",
-      "Enlever la Pierre Stase",
+      "À l'aide d'un Super Bonbon",
+      "Grâce à un pnj",
+      "En enlevant la Pierre Stase",
     ],
-    reponse: "Super Bonbon",
+    reponse: "À l'aide d'un Super Bonbon",
     reponse_informations:
       "Depuis Pokémon Épée et Bouclier, un Pokémon au niveau 100 peut évoluer avec l'aide d'un Super Bonbon. Il n’augmentera pas de niveau, mais il pourra évoluer.",
     reponse_image: "./img/bonbon.png",

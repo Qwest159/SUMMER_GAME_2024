@@ -24,7 +24,7 @@ export function affichage(
   // affichagehtml.innerHTML = "";
   let h3 = document.createElement(balise);
 
-  let h3existe = document.getElementById(balise);
+  let h3existe = document.getElementById(id_element_existe);
   if (h3existe) {
     affichagehtml.removeChild(h3existe);
   }

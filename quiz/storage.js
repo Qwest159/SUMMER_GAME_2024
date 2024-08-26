@@ -64,7 +64,7 @@ export let liste = [
       "Désert du Sahara",
       "Désert de Kalahari",
     ],
-    reponse: "Sahara",
+    reponse: "Désert du Sahara",
     reponse_informations:
       "Le Sahara est le plus grand désert chaud du monde, couvrant une grande partie de l'Afrique du Nord. Un désert chaud est caractérisé par des températures très élevées et une faible humidité.",
   },

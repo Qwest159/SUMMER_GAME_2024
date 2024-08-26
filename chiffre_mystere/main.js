@@ -47,48 +47,43 @@ function affichage(contenus) {
 
 let vie = 7;
 
-function jouer() {
-  let jeux = true;
-  button.addEventListener("click", () => {
-    if (jeux) {
-      let message = "";
-      let chiffre_recup_utilisateur = document.querySelector("#chiffre").value;
-      if (
-        chiffre_recup_utilisateur != "" &&
-        chiffre_recup_utilisateur >= 0 &&
-        chiffre_recup_utilisateur <= 100
-      ) {
-        if (chiffre_recup_utilisateur == chiffre_mystere) {
-          message = "Vous avez gagné";
-          jeux = false;
-        } else {
-          vie = vie - 1;
+function jouer(event) {
+  if (vie > 0 && (event.key === "Enter" || event.type === "click")) {
+    vie = vie - 1;
+    console.log(chiffre_mystere);
 
-          if (vie <= 0) {
-            console.log(chiffre_mystere);
-            message = "Game Over, le nombre recherché est: " + chiffre_mystere;
-            jeux = false;
-            console.log(jeux);
-          } else if (chiffre_recup_utilisateur < chiffre_mystere) {
-            message =
-              "Le nombre recherché est plus grand <br> Vie restante: " + vie;
-          } else if (chiffre_recup_utilisateur > chiffre_mystere) {
-            message =
-              "Le chiffre recherché est plus petit <br> Vie restante: " + vie;
-          }
-        }
+    let message = "";
+    let chiffre_recup_utilisateur = document.querySelector("#chiffre").value;
+    if (
+      chiffre_recup_utilisateur != "" &&
+      chiffre_recup_utilisateur >= 0 &&
+      chiffre_recup_utilisateur <= 100
+    ) {
+      if (chiffre_recup_utilisateur == chiffre_mystere) {
+        message = "Vous avez gagné";
       } else {
-        message = "Veuillez rentrer un nombre valide";
+        if (vie <= 0) {
+          console.log(chiffre_mystere);
+          message = "Game Over, le nombre recherché est: " + chiffre_mystere;
+        } else if (chiffre_recup_utilisateur < chiffre_mystere) {
+          message =
+            "Le nombre recherché est plus grand <br> Vie restante: " + vie;
+        } else if (chiffre_recup_utilisateur > chiffre_mystere) {
+          message =
+            "Le chiffre recherché est plus petit <br> Vie restante: " + vie;
+        }
       }
-      actualisation_element(
-        "chiffre",
-        (document.querySelector("#chiffre").value = "test")
-      );
-      affichage(message);
+    } else {
+      message = "Veuillez rentrer un nombre valide";
     }
-  });
+    actualisation_element("chiffre", "");
+    affichage(message);
+  }
 }
+let valeur = document.querySelector("#chiffre");
+button.addEventListener("click", jouer);
+valeur.addEventListener("keydown", jouer);
+
 function actualisation_element(id, contenu) {
-  return (document.getElementById(id).innerHTML = contenu);
+  document.getElementById(id).value = contenu;
 }
-jouer();
