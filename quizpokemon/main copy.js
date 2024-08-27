@@ -23,31 +23,25 @@ ${nav}
 </main>
 `;
 async function donnee(utilisateur) {
-  console.log("test");
-
-  const requestURL = "http://localhost:5500/quizpokemon/pokemon.php";
-  console.log(requestURL);
+  const requestURL = "http://localhost:5500/quiz/storage_donnee.json";
 
   // Définir le chemin du fichier
   // const cheminFichier = path.join(__dirname, "storage_donnee.json");
   // const requestURL =
   // "https://summergame2024.qwesty.be/quiz/storage_donnee.json";
   const request = new Request(requestURL);
-  console.log("ici?1");
 
   const response = await fetch(request);
   const classement = await response.json();
-  console.log("ici?2");
-
   //savoir si la valeur contient du texte
   if (/^[A-Za-z]+$/.test(utilisateur.value) && utilisateur.value.length < 10) {
     let nouveauformat = {
       nom: utilisateur.value,
       score: reponse_gagné.length,
     };
-    console.log("ici?3");
 
     //////////////// IIIIICCCCCCCCCCCCCCCCIIIIIIIIIIIIIII
+    fs.writeFile(cheminFichier, nouveauformat);
 
     // ICI ON DEVRA nombre_question = array.length
     let nombre_question = liste.length;
@@ -59,7 +53,6 @@ async function donnee(utilisateur) {
         }
       });
     }
-
     for (nombre_question; nombre_question >= 0; nombre_question--) {
       classement_ordre(nombre_question);
     }
