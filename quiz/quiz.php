@@ -15,6 +15,7 @@ function nettoyage_json($json)
     $nouveau_tableaux = [];
     foreach ($json as $key => $value) {
         if ($value != null) {
+
             $nouveau_tableaux[$key] = $value;
         }
     }

@@ -22,25 +22,27 @@ ${nav}
 
 </main>
 `;
+
 async function donnee(utilisateur) {
-  // const requestURL = "http://localhost:5500/quiz/storage_donnee.json";
-
-  const requestURL =
-    "https://summergame2024.qwesty.be/quiz/storage_donnee.json";
-
-  const request = new Request(requestURL);
-
-  const response = await fetch(request);
-  const classement = await response.json();
-  //savoir si la valeur contient du texte
   if (/^[A-Za-z]+$/.test(utilisateur.value) && utilisateur.value.length < 10) {
-    let nouveauformat = {
-      nom: utilisateur.value,
-      score: reponse_gagné.length,
-    };
-    classement.push(nouveauformat);
+    const url = "https://summergame2024.qwesty.be/quiz/quiz.php";
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nom: utilisateur.value,
+        score: reponse_gagné.length,
+      }),
+    });
 
-    // ICI ON DEVRA nombre_question = array.length
+    const request = new Request(url);
+
+    const response = await fetch(request);
+
+    const classement = await response.json();
+
     let nombre_question = liste.length;
     let personne = [];
     function classement_ordre(nombre_question) {
@@ -50,11 +52,12 @@ async function donnee(utilisateur) {
         }
       });
     }
+
     for (nombre_question; nombre_question >= 0; nombre_question--) {
       classement_ordre(nombre_question);
     }
     let groupe_classement =
-      "<table><thead><tr><th>Nom</th><th>Score</th></tr></thead><tbody>";
+      "<table><thead><tr><th> Nom </th><th> Score </th></tr></thead><tbody>";
     for (let index = 0; index < personne.length; index++) {
       groupe_classement +=
         "<tr><td>" +
@@ -69,13 +72,10 @@ async function donnee(utilisateur) {
     document.querySelector("#app").innerHTML = `
     ${nav}
     <main >
-    <h1>Classement</h1>
+    <h1>Classement</h1>    
     <article id="donnee_classement">${groupe_classement}</article>
     </main>
-   
     `;
-    affichage("Rafraichir", "button", "main", "rafraichir");
-    rafraichir("rafraichir");
   } else {
     affichage(
       "Uniquement des lettres et maximum 10 caractères",
@@ -97,7 +97,7 @@ ${nav}
 
   <h3>Inscrire votre Prénom</h3>
 <input id="utilisateur" type="text" />
-<button id="envoie">Envoyer</button>
+<button id="envoie">ENVOIER</button>
 </main>
 `;
   }
@@ -129,24 +129,18 @@ ${nav}
           }
         }
 
-        // 1)joker enleve laisse 2 reponse actif (index = 2)
-        // 2) faire en sorte que le joker laisse 1 reponse vraie et 1 fausse
-        // 3) ATTENTION LE FOR PEUT REMETTRE LA REPONSE VRAIE DANS LA QUESTION
-
         for (
           let index = 0;
           index < montableau_index_aleatoire.length;
           index++
         ) {
-          /////
           let choix_button = document.createElement("button");
 
           choix_button.id = element.choix[montableau_index_aleatoire[index]];
           choix_button.className = "choix_reponse";
           choix_button.textContent =
             element.choix[montableau_index_aleatoire[index]];
-          // faire en sorte que si reponse = reponse vrai alors index +1
-          // 2) if button click alors effectue cela
+
           if (choix_button.textContent == element.reponse) {
             choix_button.textContent = element.reponse;
             div_choix.appendChild(choix_button);
@@ -188,10 +182,6 @@ ${nav}
       });
     }
 
-    // if (document.querySelector("#question").textContent == "Plus de questions") {
-    //   affichage("rafraichir", "button", ".jeux", "rafraichir");
-    //   rafraichir("rafraichir");
-    // }
     buttons_choix.forEach((buttons) => {
       buttons.addEventListener("click", () => {
         if (vie == 1 && buttons.textContent != "") {
@@ -199,7 +189,6 @@ ${nav}
           let article = document.querySelector("#contenu_reponse");
           let choix_button = document.createElement("button");
 
-          // ATTENTION PLUSIEURS CLICK POSSIBLE  => REPARER
           vie = vie - 1;
           if (liste[index_questions].reponse == button_click) {
             article.innerHTML = "Bien joué";

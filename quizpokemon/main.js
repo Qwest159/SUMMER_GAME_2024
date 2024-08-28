@@ -22,34 +22,28 @@ ${nav}
 
 </main>
 `;
+
 async function donnee(utilisateur) {
-  console.log("test");
-
-  const requestURL = "http://localhost:5500/quizpokemon/pokemon.php";
-  console.log(requestURL);
-
-  // Définir le chemin du fichier
-  // const cheminFichier = path.join(__dirname, "storage_donnee.json");
-  // const requestURL =
-  // "https://summergame2024.qwesty.be/quiz/storage_donnee.json";
-  const request = new Request(requestURL);
-  console.log("ici?1");
-
-  const response = await fetch(request);
-  const classement = await response.json();
-  console.log("ici?2");
-
-  //savoir si la valeur contient du texte
   if (/^[A-Za-z]+$/.test(utilisateur.value) && utilisateur.value.length < 10) {
-    let nouveauformat = {
-      nom: utilisateur.value,
-      score: reponse_gagné.length,
-    };
-    console.log("ici?3");
+    const url = "https://summergame2024.qwesty.be/quizpokemon/pokemon.php";
+    // const requestURL = "http://localhost:5500/quiz/storage_donnee.json";
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nom: utilisateur.value,
+        score: reponse_gagné.length,
+      }),
+    });
 
-    //////////////// IIIIICCCCCCCCCCCCCCCCIIIIIIIIIIIIIII
+    const request = new Request(url);
 
-    // ICI ON DEVRA nombre_question = array.length
+    const response = await fetch(request);
+
+    const classement = await response.json();
+
     let nombre_question = liste.length;
     let personne = [];
     function classement_ordre(nombre_question) {
@@ -64,7 +58,7 @@ async function donnee(utilisateur) {
       classement_ordre(nombre_question);
     }
     let groupe_classement =
-      "<table><thead><tr><th>Nom</th><th>Score</th></tr></thead><tbody>";
+      "<table><thead><tr><th> Nom </th><th> Score </th></tr></thead><tbody>";
     for (let index = 0; index < personne.length; index++) {
       groupe_classement +=
         "<tr><td>" +
@@ -107,8 +101,6 @@ ${nav}
 <button id="envoie">ENVOIER</button>
 </main>
 `;
-    // affichage("rafraichir", "button", ".jeux", "rafraichir");
-    // rafraichir("rafraichir");
   }
   let envoie = document.querySelector("#envoie");
   if (envoie) {
@@ -138,10 +130,6 @@ ${nav}
           }
         }
 
-        // 1)joker enleve laisse 2 reponse actif (index = 2)
-        // 2) faire en sorte que le joker laisse 1 reponse vraie et 1 fausse
-        // 3) ATTENTION LE FOR PEUT REMETTRE LA REPONSE VRAIE DANS LA QUESTION
-
         for (
           let index = 0;
           index < montableau_index_aleatoire.length;
@@ -154,8 +142,7 @@ ${nav}
           choix_button.className = "choix_reponse";
           choix_button.textContent =
             element.choix[montableau_index_aleatoire[index]];
-          // faire en sorte que si reponse = reponse vrai alors index +1
-          // 2) if button click alors effectue cela
+
           if (choix_button.textContent == element.reponse) {
             choix_button.textContent = element.reponse;
             div_choix.appendChild(choix_button);
@@ -197,10 +184,6 @@ ${nav}
       });
     }
 
-    // if (document.querySelector("#question").textContent == "Plus de questions") {
-    //   affichage("rafraichir", "button", ".jeux", "rafraichir");
-    //   rafraichir("rafraichir");
-    // }
     buttons_choix.forEach((buttons) => {
       buttons.addEventListener("click", () => {
         if (vie == 1 && buttons.textContent != "") {
